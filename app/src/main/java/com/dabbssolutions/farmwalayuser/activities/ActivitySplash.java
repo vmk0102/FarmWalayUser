@@ -1,4 +1,4 @@
-package com.dabbssolutions.farmwalayuser;
+package com.dabbssolutions.farmwalayuser.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.dabbssolutions.farmwalayuser.R;
 
 public class ActivitySplash extends AppCompatActivity {
     RelativeLayout rl;

@@ -1,14 +1,15 @@
-package com.dabbssolutions.farmwalayuser;
+package com.dabbssolutions.farmwalayuser.activities;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.dabbssolutions.farmwalayuser.R;
 
 public class FarmHouseDetailsActivity extends AppCompatActivity {
     RelativeLayout btnViewDetails;

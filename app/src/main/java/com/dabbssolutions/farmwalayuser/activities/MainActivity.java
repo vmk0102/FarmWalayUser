@@ -1,4 +1,4 @@
-package com.dabbssolutions.farmwalayuser;
+package com.dabbssolutions.farmwalayuser.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.dabbssolutions.farmwalayuser.R;
 
 public class MainActivity extends AppCompatActivity {
     RelativeLayout guestHouseBtn,farmHouseBtn,ViewDetails,BookNow;

@@ -9,27 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Farmwalay">
-        <activity android:name=".ActivitySplash">
+        <activity android:name=".activities.ActivitySplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityForgotPass" >
+        <activity android:name=".activities.ActivityForgotPass" >
 
         </activity>
-        <activity android:name=".ActivityLogin" >
+        <activity android:name=".activities.ActivityLogin" >
 
         </activity>
-        <activity android:name=".ActivitySignup" >
+        <activity android:name=".activities.ActivitySignup" >
 
         </activity>
 
-        <activity android:name=".MainActivity" >
+        <activity android:name=".activities.MainActivity" >
 
         </activity>
-        <activity android:name=".FarmHouseDetailsActivity" >
+        <activity android:name=".activities.FarmHouseDetailsActivity" >
 
         </activity>
     </application>
