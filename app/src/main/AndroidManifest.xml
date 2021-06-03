@@ -32,6 +32,9 @@
         <activity android:name=".activities.FarmHouseDetailsActivity" >
 
         </activity>
+        <activity android:name=".activities.ActivityAddUsers" >
+
+        </activity>
     </application>
 
 </manifest>
