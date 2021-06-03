@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greenapp"
+    android:fillViewport="true"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/white"
+
+        android:background="@drawable/roundedtopcorner"
+        android:layout_height="match_parent" >
+        <TextView
+            android:layout_marginTop="100dp"
+            android:id="@+id/searchbar"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:text="Bed Room with two Beds and a dressing set and AC with attached bath\n\nBig Hall with carpet, two fans and cushions\n\nLarge Swimming Pool (6 feet dept. starting from 3.5 feet, 20*40 Square
+ feet) with Changing and Shower Rooms\n\nChildresn's Play Area with Swings, Slides, Meri-Go-Round and Seesaw"
+            android:textColor="@color/black"
+            />
+<LinearLayout
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_below="@+id/searchbar"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:riv_corner_radius="10dp"
+            android:src="@drawable/farmhouse"
+            />
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="30dp"
+            app:riv_corner_radius="10dp"
+            android:src="@drawable/farmhouse"
+            />
+
+
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:riv_corner_radius="10dp"
+            android:src="@drawable/farmhouse"
+            />
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="30dp"
+            app:riv_corner_radius="10dp"
+            android:src="@drawable/farmhouse"
+            />
+
+
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/btnBookNow"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="Book Now"
+        android:gravity="center"
+
+        android:layout_gravity="center"
+        android:background="@drawable/roundedbtns"
+        android:backgroundTint="@color/orangeColor"
+        android:textColor="@color/black"
+        android:layout_width="150dp"
+        android:layout_height="40dp" />
+
+</LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/roundedcircle"
+        android:elevation="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:elevation="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="150dp"
+            android:src="@drawable/fm_transparent"
+            android:layout_centerHorizontal="true"
+            android:layout_height="150dp" />
+    </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

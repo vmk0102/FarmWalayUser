@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greenapp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/white"
+
+        android:background="@drawable/roundedtopcorner"
+        android:layout_height="match_parent" >
+        <LinearLayout
+            android:id="@+id/select"
+            android:orientation="horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/farmhousebtn"
+                android:clickable="true"
+                android:background="@drawable/roundedbtns"
+                android:layout_width="100dp"
+                android:layout_height="40dp">
+                <TextView
+                    android:text="Farmhouse"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/guesthousebtn"
+                android:clickable="true"
+                android:background="@drawable/roundedbtns"
+                android:layout_marginLeft="20dp"
+                android:layout_width="100dp"
+                android:layout_height="40dp">
+                <TextView
+                    android:text="Guesthouse"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_below="@id/select"
+            android:id="@+id/searchbar"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundedbtn"
+            android:orientation="horizontal"
+            android:backgroundTint="@color/lightgreenapp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:textSize="18sp"
+                android:layout_marginRight="-30dp"
+                android:paddingLeft="20dp"
+                android:backgroundTint="@color/lightgreenapp"
+
+                android:hint="search" />
+            <RelativeLayout
+                android:id="@+id/btnSearch"
+                android:background="@drawable/roundedbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+
+
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+
+                    android:src="@drawable/ic_search"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    app:tint="@color/white"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+<LinearLayout
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_below="@+id/searchbar"
+    >
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:orientation="horizontal" >
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:riv_corner_radius="10dp"
+            android:src="@drawable/farmhouse"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/farmhousename"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Black Hallow Farm"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/farmhouseaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Malir Cantt, Karachi"
+                android:textSize="12dp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/farmhousecontact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="03223192145"
+                android:textSize="12dp"
+                android:textColor="@color/black"
+                />
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+                >
+              <RelativeLayout
+                  android:clickable="true"
+                  android:id="@+id/viewDetails"
+                  android:layout_width="80dp"
+                  android:layout_height="40dp"
+                  android:backgroundTint="#95c754"
+                  android:background="@drawable/roundedbtns"
+                  >
+                  <TextView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_centerVertical="true"
+                      android:layout_centerHorizontal="true"
+
+                      android:textAlignment="center"
+                      android:textColor="@color/black"
+                      android:text="View\n Details"
+                      />
+
+              </RelativeLayout>
+                <RelativeLayout
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/bookNow"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:clickable="true"
+                    android:background="@drawable/roundedbtns"
+                    android:backgroundTint="#ffc116"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:text="Book \nNow"
+                        />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+</LinearLayout>
+</LinearLayout>
+
+
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/roundedcircle"
+        android:elevation="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:elevation="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="150dp"
+            android:src="@drawable/fm_transparent"
+            android:layout_centerHorizontal="true"
+            android:layout_height="150dp" />
+    </LinearLayout>
+
+
+</RelativeLayout>
