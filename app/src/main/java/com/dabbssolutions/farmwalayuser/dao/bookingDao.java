@@ -45,8 +45,8 @@ public class bookingDao {
             nameValuePairs.add(new BasicNameValuePair("bookingtime", b.getBookingtime()));
             nameValuePairs.add(new BasicNameValuePair("uid", String.valueOf(b.getUid())));
             nameValuePairs.add(new BasicNameValuePair("farmhouseid", String.valueOf(b.getFarmhouseid())));
+            nameValuePairs.add(new BasicNameValuePair("guesthouseid", String.valueOf(b.getGuesthouseid())));
             nameValuePairs.add(new BasicNameValuePair("bookingprice", String.valueOf(b.getBookingprice())));
-            nameValuePairs.add(new BasicNameValuePair("isConfirmed", String.valueOf(b.getIsConfirmed())));
 
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
@@ -101,8 +101,8 @@ public class bookingDao {
             nameValuePairs.add(new BasicNameValuePair("bookingtime", b.getBookingtime()));
             nameValuePairs.add(new BasicNameValuePair("uid", String.valueOf(b.getUid())));
             nameValuePairs.add(new BasicNameValuePair("farmhouseid", String.valueOf(b.getFarmhouseid())));
+            nameValuePairs.add(new BasicNameValuePair("guesthouseid", String.valueOf(b.getGuesthouseid())));
             nameValuePairs.add(new BasicNameValuePair("bookingprice", String.valueOf(b.getBookingprice())));
-            nameValuePairs.add(new BasicNameValuePair("isConfirmed", String.valueOf(b.getIsConfirmed())));
 
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
@@ -176,38 +176,38 @@ public class bookingDao {
 
 
 
-
-    public String getAllBookings(Context context){
-
-        try {
-
-            String getUrl = "http://dabbssolutions.org/api/bookingsAPI/getAllBookings.php";//https://www.pakistanscrabble.org/api.php";
-            Log.v("SOMEONE ONCE SAID", "postURL: " + getUrl);
-
-            HttpClient httpClient = new DefaultHttpClient();
-
-            HttpGet httpGet = new HttpGet(getUrl);
-
-
-            HttpResponse response = httpClient.execute(httpGet);
-            HttpEntity resEntity = response.getEntity();
-
-            if (resEntity != null) {
-
-                String responseStr = EntityUtils.toString(resEntity).trim();
-                Log.v("SOMEONE ONCE SAID", "Response: " + responseStr);
-                return  responseStr;
-                //return responseStr;
-
-                // you can add an if statement here and do other actions based on the response
-            } else {
-                return "NO DATA";
-            }
-        } catch (Exception e) {
-            return e.getMessage();
-
-        }
-    }
+//
+//    public String getAllBookings(Context context){
+//
+//        try {
+//
+//            String getUrl = "http://dabbssolutions.org/api/bookingsAPI/getAllBookings.php";//https://www.pakistanscrabble.org/api.php";
+//            Log.v("SOMEONE ONCE SAID", "postURL: " + getUrl);
+//
+//            HttpClient httpClient = new DefaultHttpClient();
+//
+//            HttpGet httpGet = new HttpGet(getUrl);
+//
+//
+//            HttpResponse response = httpClient.execute(httpGet);
+//            HttpEntity resEntity = response.getEntity();
+//
+//            if (resEntity != null) {
+//
+//                String responseStr = EntityUtils.toString(resEntity).trim();
+//                Log.v("SOMEONE ONCE SAID", "Response: " + responseStr);
+//                return  responseStr;
+//                //return responseStr;
+//
+//                // you can add an if statement here and do other actions based on the response
+//            } else {
+//                return "NO DATA";
+//            }
+//        } catch (Exception e) {
+//            return e.getMessage();
+//
+//        }
+//    }
 
 
 }

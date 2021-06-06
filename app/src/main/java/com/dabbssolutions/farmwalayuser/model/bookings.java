@@ -9,11 +9,30 @@ public class bookings implements Serializable {
     private String bookingtime;
     private int uid;
     private int farmhouseid;
+    private int guesthouseid;
     private double bookingprice;
     private int isConfirmed;
+    private int isDeleted;
 
 
 
+
+    public int getGuesthouseid() {
+        return guesthouseid;
+    }
+
+    public void setGuesthouseid(int guesthouseid) {
+        this.guesthouseid = guesthouseid;
+    }
+
+
+    public int getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
+    }
 
     public int getBid() {
         return bid;
