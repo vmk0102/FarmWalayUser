@@ -248,6 +248,8 @@ public class UserDao {
 
                 // you can add an if statement here and do other actions based on the response
             }else{
+                Log.v("SOMEONE ONCE SAID", "Response: " + "tutty lag gaee");
+
                 return "NO DATA";
             }
         } catch (Exception e) {
