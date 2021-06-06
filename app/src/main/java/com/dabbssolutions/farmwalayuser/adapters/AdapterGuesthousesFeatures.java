@@ -51,15 +51,13 @@ public class AdapterGuesthousesFeatures extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-//        if(convertView==null){
-//            convertView= LayoutInflater.from(context).inflate(R.layout.layout_featureforadd_single,parent,false);
-//
-//
-//        }
+        if(convertView==null){
+      convertView= LayoutInflater.from(context).inflate(R.layout.layout_features_single,parent,false);
+
+
+        }
         guesthousefeatures a =(guesthousefeatures) getItem(position);
-        CheckBox cb = convertView.findViewById(R.id.txtFeatureChecked);
-        cb.setVisibility(View.GONE);
-        TextView txtFarmName= convertView.findViewById(R.id.txtFeatureName);
+        TextView txtFarmName= convertView.findViewById(R.id.lblFeatureName);
         txtFarmName.setText(a.getFeaturename());
 
         if(position%2==0){

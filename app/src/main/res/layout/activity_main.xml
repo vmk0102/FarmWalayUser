@@ -64,13 +64,13 @@
             android:layout_marginRight="20dp"
             >
             <EditText
+                android:id="@+id/txtSearchingData"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:textSize="18sp"
                 android:layout_marginRight="-30dp"
                 android:paddingLeft="20dp"
                 android:backgroundTint="@color/lightgreenapp"
-
                 android:hint="search" />
             <RelativeLayout
                 android:id="@+id/btnSearch"
@@ -100,105 +100,110 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     android:layout_below="@+id/searchbar"
-    >
-    <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:orientation="horizontal" >
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:riv_corner_radius="10dp"
-            android:src="@drawable/farmhouse"
-            />
-        <LinearLayout
+    />
+<!--    <LinearLayout-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:clickable="true"-->
+<!--        android:orientation="horizontal" >-->
+<!--        <com.makeramen.roundedimageview.RoundedImageView-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="150dp"-->
+<!--            app:riv_corner_radius="10dp"-->
+<!--            android:src="@drawable/farmhouse"-->
+<!--            />-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="15dp"-->
+<!--            android:orientation="vertical"-->
+<!--            >-->
+<!--            <TextView-->
+<!--                android:id="@+id/farmhousename"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:text="Black Hallow Farm"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                />-->
+<!--            <TextView-->
+<!--                android:id="@+id/farmhouseaddress"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:text="Malir Cantt, Karachi"-->
+<!--                android:textSize="12dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                />-->
+<!--            <TextView-->
+<!--                android:id="@+id/farmhousecontact"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:text="03223192145"-->
+<!--                android:textSize="12dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                />-->
+<!--            <LinearLayout-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+
+<!--                android:orientation="horizontal"-->
+<!--                >-->
+<!--                <RelativeLayout-->
+<!--                    android:clickable="true"-->
+<!--                    android:id="@+id/viewDetails"-->
+<!--                    android:layout_width="80dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:backgroundTint="#95c754"-->
+<!--                    android:background="@drawable/roundedbtns"-->
+<!--                    >-->
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_centerHorizontal="true"-->
+
+<!--                        android:textAlignment="center"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:text="View\n Details"-->
+<!--                        />-->
+
+<!--                </RelativeLayout>-->
+<!--                <RelativeLayout-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:id="@+id/bookNow"-->
+<!--                    android:layout_width="80dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:background="@drawable/roundedbtns"-->
+<!--                    android:backgroundTint="#ffc116"-->
+<!--                    >-->
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:textAlignment="center"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:text="Book \nNow"-->
+<!--                        />-->
+
+<!--                </RelativeLayout>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--</LinearLayout>-->
+<!--</LinearLayout>-->
+        <ListView
+            android:id="@+id/lvItems"
+            android:layout_below="@id/searchbar"
+            android:layout_marginTop="25dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:id="@+id/farmhousename"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="Black Hallow Farm"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:id="@+id/farmhouseaddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="Malir Cantt, Karachi"
-                android:textSize="12dp"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:id="@+id/farmhousecontact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="03223192145"
-                android:textSize="12dp"
-                android:textColor="@color/black"
-                />
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:orientation="horizontal"
-                >
-              <RelativeLayout
-                  android:clickable="true"
-                  android:id="@+id/viewDetails"
-                  android:layout_width="80dp"
-                  android:layout_height="40dp"
-                  android:backgroundTint="#95c754"
-                  android:background="@drawable/roundedbtns"
-                  >
-                  <TextView
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_centerVertical="true"
-                      android:layout_centerHorizontal="true"
-
-                      android:textAlignment="center"
-                      android:textColor="@color/black"
-                      android:text="View\n Details"
-                      />
-
-              </RelativeLayout>
-                <RelativeLayout
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/bookNow"
-                    android:layout_width="80dp"
-                    android:layout_height="40dp"
-                    android:clickable="true"
-                    android:background="@drawable/roundedbtns"
-                    android:backgroundTint="#ffc116"
-                    >
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:text="Book \nNow"
-                        />
-
-                </RelativeLayout>
-            </LinearLayout>
-        </LinearLayout>
-</LinearLayout>
-</LinearLayout>
-
+            android:layout_height="match_parent" />
 
 
 

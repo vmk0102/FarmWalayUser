@@ -14,11 +14,12 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.dabbssolutions.farmwalay.R;
-import com.dabbssolutions.farmwalay.dao.farmhouseDao;
-import com.dabbssolutions.farmwalay.dao.farmhouseFeaturesDao;
-import com.dabbssolutions.farmwalay.model.farmhousefeatures;
-import com.dabbssolutions.farmwalay.model.farmhouses;
+import com.dabbssolutions.farmwalayuser.R;
+import com.dabbssolutions.farmwalayuser.dao.farmhouseDao;
+import com.dabbssolutions.farmwalayuser.dao.farmhouseFeaturesDao;
+import com.dabbssolutions.farmwalayuser.model.farmhousefeatures;
+import com.dabbssolutions.farmwalayuser.model.farmhouses;
+import com.dabbssolutions.farmwalayuser.model.features;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -105,10 +106,10 @@ public class AdapterFarmhouses extends BaseAdapter {
                                 act.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        farmhousefeatures[] f = new Gson().fromJson(s,farmhousefeatures[].class);
-                                        ArrayList<farmhousefeatures> ff = new ArrayList<>();
+                                        features[] f = new Gson().fromJson(s,features[].class);
+                                        ArrayList<features> ff = new ArrayList<>();
                                         Collections.addAll(ff,f);
-                                        AdapterFarmhousesFeatures aff = new AdapterFarmhousesFeatures(ff,context,0);
+                                        AdapterFeatures aff = new AdapterFeatures(ff,context,0);
                                         lv.setAdapter(aff);
                                         ll.addView(lv);
                                         ab.setView(ll);
@@ -129,70 +130,6 @@ public class AdapterFarmhouses extends BaseAdapter {
 
                         }
                     }).start();
-                }
-            });
-        }else if(view==1){
-            btnUpdate.setVisibility(View.GONE);
-            btnViewFeatures.setVisibility(View.GONE);
-            btnDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    pd.show();
-
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            s="false";
-                            s=new farmhouseDao().deleteFarmhouse(a,context);
-                            Activity act=(Activity)context;
-                            if(s.toLowerCase().contains("true")){
-                                s=new farmhouseFeaturesDao().deleteAllFarmhouseFeature(a,context);
-                            }else{
-                                s="false";
-                            }
-                            act.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    pd.cancel();
-
-                                    if(s.toLowerCase().contains("true")) {
-                                        AlertDialog.Builder ab = new AlertDialog.Builder(context);
-                                        ab.setMessage("Feature deleted successfully");
-                                        ab.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                ((Activity) context).finish();
-                                                dialog.cancel();
-                                            }
-                                        }).show();
-                                    }else {
-                                        AlertDialog.Builder ab = new AlertDialog.Builder(context);
-                                        ab.setMessage("Error adding Feature");
-                                        ab.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.cancel();
-                                            }
-                                        }).show();
-                                    }
-                                }
-                            });
-                        }
-                    }).start();
-                }
-            });
-        }
-        else if(view==2){
-            btnDelete.setVisibility(View.GONE);
-            btnViewFeatures.setVisibility(View.GONE);
-            btnUpdate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Intent i = new Intent(context, ActivityUpdateFar.class);
-                    //i.putExtra("item",a);
-                    //i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //context.startActivity(i);
-
                 }
             });
         }
