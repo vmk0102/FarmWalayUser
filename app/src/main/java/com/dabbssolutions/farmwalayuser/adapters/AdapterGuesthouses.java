@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dabbssolutions.farmwalayuser.R;
+import com.dabbssolutions.farmwalayuser.activities.ActivityViewDetails;
 import com.dabbssolutions.farmwalayuser.dao.guesthouseDao;
 import com.dabbssolutions.farmwalayuser.dao.guesthousefeatureDao;
 import com.dabbssolutions.farmwalayuser.model.guesthousefeatures;
@@ -96,6 +98,11 @@ public class AdapterGuesthouses extends BaseAdapter {
                     final AlertDialog.Builder ab = new AlertDialog.Builder(context);
                     final LinearLayout ll = new LinearLayout(context);
                     final ListView lv = new ListView(context);
+                    Intent intent = new Intent(context, ActivityViewDetails.class);
+                    intent.putExtra("id",a.getGuesthouseid());
+                    context.startActivity(intent);
+
+
                     new Thread(new Runnable() {
                         @Override
                         public void run() {

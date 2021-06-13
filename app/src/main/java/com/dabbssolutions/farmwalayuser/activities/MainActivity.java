@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -45,9 +46,14 @@ public class MainActivity extends AppCompatActivity {
         pd.setMessage("Please wait");
 
 
+
         guestHouseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                farmHouseBtn.setEnabled(true);
+                guestHouseBtn.setEnabled(false);
+                farmHouseBtn.setBackgroundResource(R.drawable.roundedbtn);
+                guestHouseBtn.setBackgroundResource(R.drawable.round_btn_disable);
                 pd.show();
                 new Thread(new Runnable() {
                     @Override
@@ -104,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
         farmHouseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                farmHouseBtn.setEnabled(false);
+                guestHouseBtn.setEnabled(true);
+                farmHouseBtn.setBackgroundResource(R.drawable.round_btn_disable);
+                guestHouseBtn.setBackgroundResource(R.drawable.roundedbtn);
                 pd.show();
                 new Thread(new Runnable() {
                     @Override
@@ -157,5 +167,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//      SHOWING FARMHOUSE LIST BY DEFUALT ON PAGE LOAD UP
+//      TRIGGERING THE ON CLICK LISTENER
+        farmHouseBtn.performClick();
     }
 }
