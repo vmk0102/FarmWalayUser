@@ -86,9 +86,30 @@ public class MainActivity extends AppCompatActivity {
 
                                         @Override
                                         public void afterTextChanged(Editable s) {
+                                            userslist.clear();
+                                            if(!txtSearch.getText().toString().trim().equals("")){
+
+                                                for(int i=0;i<userslist2.size();i++){
+                                                    if(userslist2.get(i).getGuesthousename().toLowerCase().contains(txtSearch.getText().toString().toLowerCase().trim())){
+                                                        userslist.add(userslist2.get(i));
+                                                    }
+                                                }
+                                                if(userslist.size()>0){
+                                                    aa.notifyDataSetChanged();
+                                                }else{
+                                                    userslist.addAll(userslist2);
+                                                    aa.notifyDataSetChanged();
+                                                }
+
+                                            }else{
+                                                userslist.addAll(userslist2);
+                                                aa.notifyDataSetChanged();
+                                            }
 
 
                                         }
+
+
                                     });
 
                                 }catch (Exception d){
@@ -142,6 +163,25 @@ public class MainActivity extends AppCompatActivity {
 
                                         @Override
                                         public void afterTextChanged(Editable s) {
+                                            userslist.clear();
+                                            if(!txtSearch.getText().toString().trim().equals("")){
+
+                                                for(int i=0;i<userslist2.size();i++){
+                                                    if(userslist2.get(i).getFarmname().toLowerCase().contains(txtSearch.getText().toString().toLowerCase().trim())){
+                                                        userslist.add(userslist2.get(i));
+                                                    }
+                                                }
+                                                if(userslist.size()>0){
+                                                    aa.notifyDataSetChanged();
+                                                }else{
+                                                    userslist.addAll(userslist2);
+                                                    aa.notifyDataSetChanged();
+                                                }
+
+                                            }else{
+                                                userslist.addAll(userslist2);
+                                                aa.notifyDataSetChanged();
+                                            }
 
 
                                         }
