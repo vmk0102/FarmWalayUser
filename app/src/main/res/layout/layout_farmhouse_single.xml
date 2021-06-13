@@ -85,7 +85,7 @@
 <LinearLayout
     android:layout_below="@+id/infoLayout"
     android:layout_width="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_marginTop="10dp"
     android:layout_height="wrap_content">
     <RelativeLayout
@@ -110,7 +110,8 @@
         android:backgroundTint="@color/greenapp"
         android:background="@drawable/roundedbtn"
         android:layout_width="match_parent"
-
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
         android:layout_height="40dp">
         <TextView
             android:textColor="@color/white"
@@ -118,8 +119,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:textSize="18sp"
-            android:text="Update"
-
+            android:text="View Pictures"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -137,6 +137,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:textSize="18sp"
+            android:visibility="gone"
             android:text="Delete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

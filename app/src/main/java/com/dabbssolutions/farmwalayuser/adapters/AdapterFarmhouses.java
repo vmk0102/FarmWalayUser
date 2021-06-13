@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dabbssolutions.farmwalayuser.R;
+import com.dabbssolutions.farmwalayuser.activities.ActivityAddUsers;
+import com.dabbssolutions.farmwalayuser.activities.ActivityViewDetails;
 import com.dabbssolutions.farmwalayuser.dao.farmhouseDao;
 import com.dabbssolutions.farmwalayuser.dao.farmhouseFeaturesDao;
 import com.dabbssolutions.farmwalayuser.model.farmhousefeatures;
@@ -96,6 +99,11 @@ public class AdapterFarmhouses extends BaseAdapter {
                 public void onClick(View v) {
                     final AlertDialog.Builder ab = new AlertDialog.Builder(context);
                     final LinearLayout ll = new LinearLayout(context);
+                    Intent intent = new Intent(context, ActivityViewDetails.class);
+                    intent.putExtra("id",a.getFarmhouseid());
+                    context.startActivity(intent);
+
+
                     final ListView lv = new ListView(context);
                     new Thread(new Runnable() {
                         @Override
