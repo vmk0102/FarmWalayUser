@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.dabbssolutions.farmwalay.R;
-import com.dabbssolutions.farmwalay.model.guesthousepictures;
+import com.dabbssolutions.farmwalayuser.R;
+import com.dabbssolutions.farmwalayuser.model.guesthousepictures;
 
 import java.util.ArrayList;
 

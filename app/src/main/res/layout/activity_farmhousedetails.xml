@@ -20,7 +20,7 @@
         android:layout_height="match_parent" >
         <TextView
             android:layout_marginTop="100dp"
-            android:id="@+id/searchbar"
+            android:id="@+id/txtdetails"
             android:layout_width="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -35,62 +35,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
-    android:layout_below="@+id/searchbar"
+    android:layout_below="@+id/txtdetails"
     android:orientation="vertical"
     >
-    <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+    <ListView
+        android:id="@+id/lvPics"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:riv_corner_radius="10dp"
-
-            android:src="@drawable/farmhouse"
-            />
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="30dp"
-            app:riv_corner_radius="10dp"
-            android:src="@drawable/farmhouse"
-            />
-
-
-
-</LinearLayout>
-    <LinearLayout
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:riv_corner_radius="10dp"
-            android:src="@drawable/farmhouse"
-            />
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="30dp"
-            app:riv_corner_radius="10dp"
-            android:src="@drawable/farmhouse"
-            />
-
-
-
-
-    </LinearLayout>
-    <TextView
+        android:layout_height="280dp" />
+        <TextView
         android:id="@+id/btnBookNow"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:text="Book Now"
+            android:clickable="true"
+            android:layout_marginTop="20dp"
         android:gravity="center"
 
         android:layout_gravity="center"

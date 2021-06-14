@@ -14,4 +14,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="NumberPickerStyle">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColorPrimary">#000</item>
+        <item name="android:colorControlNormal" tools:targetApi="lollipop">#000</item>
+    </style>
 </resources>

@@ -99,7 +99,11 @@ public class AdapterGuesthouses extends BaseAdapter {
                     final LinearLayout ll = new LinearLayout(context);
                     final ListView lv = new ListView(context);
                     Intent intent = new Intent(context, ActivityViewDetails.class);
-                    intent.putExtra("id",a.getGuesthouseid());
+                    intent.putExtra("gid",a.getGuesthouseid());
+                    intent.putExtra("name",a.getGuesthousename());
+                    intent.putExtra("price",a.getGuesthouseprice());
+                    intent.putExtra("location",a.getGuesthouselocation());
+
                     context.startActivity(intent);
 
 

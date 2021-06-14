@@ -100,7 +100,10 @@ public class AdapterFarmhouses extends BaseAdapter {
                     final AlertDialog.Builder ab = new AlertDialog.Builder(context);
                     final LinearLayout ll = new LinearLayout(context);
                     Intent intent = new Intent(context, ActivityViewDetails.class);
-                    intent.putExtra("id",a.getFarmhouseid());
+                    intent.putExtra("fid",String.valueOf(a.getFarmhouseid()));
+                    intent.putExtra("location",String.valueOf(a.getFarmlocation()));
+                    intent.putExtra("price",String.valueOf(a.getFarmprice()));
+                    intent.putExtra("name",String.valueOf(a.getFarmname()));
                     context.startActivity(intent);
 
 
