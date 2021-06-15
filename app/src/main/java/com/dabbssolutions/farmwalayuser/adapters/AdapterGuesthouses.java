@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.dabbssolutions.farmwalayuser.R;
 import com.dabbssolutions.farmwalayuser.activities.ActivityViewDetails;
+import com.dabbssolutions.farmwalayuser.activities.FarmHouseDetailsActivity;
 import com.dabbssolutions.farmwalayuser.dao.guesthouseDao;
 import com.dabbssolutions.farmwalayuser.dao.guesthousefeatureDao;
 import com.dabbssolutions.farmwalayuser.model.guesthousefeatures;
@@ -98,10 +99,10 @@ public class AdapterGuesthouses extends BaseAdapter {
                     final AlertDialog.Builder ab = new AlertDialog.Builder(context);
                     final LinearLayout ll = new LinearLayout(context);
                     final ListView lv = new ListView(context);
-                    Intent intent = new Intent(context, ActivityViewDetails.class);
-                    intent.putExtra("gid",a.getGuesthouseid());
+                    Intent intent = new Intent(context, FarmHouseDetailsActivity.class);
+                    intent.putExtra("id","g:"+String.valueOf(a.getGuesthouseid()));
                     intent.putExtra("name",a.getGuesthousename());
-                    intent.putExtra("price",a.getGuesthouseprice());
+                    intent.putExtra("price",String.valueOf(a.getGuesthouseprice()));
                     intent.putExtra("location",a.getGuesthouselocation());
 
                     context.startActivity(intent);

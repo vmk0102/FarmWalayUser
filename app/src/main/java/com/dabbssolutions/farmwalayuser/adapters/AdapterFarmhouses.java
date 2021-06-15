@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.dabbssolutions.farmwalayuser.R;
 import com.dabbssolutions.farmwalayuser.activities.ActivityAddUsers;
 import com.dabbssolutions.farmwalayuser.activities.ActivityViewDetails;
+import com.dabbssolutions.farmwalayuser.activities.FarmHouseDetailsActivity;
 import com.dabbssolutions.farmwalayuser.dao.farmhouseDao;
 import com.dabbssolutions.farmwalayuser.dao.farmhouseFeaturesDao;
 import com.dabbssolutions.farmwalayuser.model.farmhousefeatures;
@@ -99,8 +100,8 @@ public class AdapterFarmhouses extends BaseAdapter {
                 public void onClick(View v) {
                     final AlertDialog.Builder ab = new AlertDialog.Builder(context);
                     final LinearLayout ll = new LinearLayout(context);
-                    Intent intent = new Intent(context, ActivityViewDetails.class);
-                    intent.putExtra("fid",String.valueOf(a.getFarmhouseid()));
+                    Intent intent = new Intent(context, FarmHouseDetailsActivity.class);
+                    intent.putExtra("id","f:"+String.valueOf(a.getFarmhouseid()));
                     intent.putExtra("location",String.valueOf(a.getFarmlocation()));
                     intent.putExtra("price",String.valueOf(a.getFarmprice()));
                     intent.putExtra("name",String.valueOf(a.getFarmname()));

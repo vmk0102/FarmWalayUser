@@ -64,6 +64,9 @@ dependencies {
     compile 'org.apache.httpcomponents:httpclient:4.5'
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation 'com.github.drawers:SpinnerDatePicker:2.0.1'
+    implementation 'com.github.florent37:singledateandtimepicker:2.2.7'
+//compatible with androidX
+
 
 
     testImplementation 'junit:junit:4.+'
