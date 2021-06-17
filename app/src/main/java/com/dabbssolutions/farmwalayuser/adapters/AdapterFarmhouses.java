@@ -6,10 +6,14 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -76,12 +80,16 @@ public class AdapterFarmhouses extends BaseAdapter {
         TextView txtFarmName= convertView.findViewById(R.id.txtFarmName);
         TextView txtFarmLocation= convertView.findViewById(R.id.txtLocation);
         TextView txtFarmPrice= convertView.findViewById(R.id.txtPrice);
+        ImageView imgv = convertView.findViewById(R.id.farmpic);
         txtFarmName.setText(a.getFarmname());
         txtFarmLocation.setText(a.getFarmlocation());
-        txtFarmPrice.setText(String.valueOf(a.getFarmprice()));
-        RelativeLayout btnDelete=convertView.findViewById(R.id.btnDelete);
-        RelativeLayout btnUpdate=convertView.findViewById(R.id.btnUpdate);
+        txtFarmPrice.setText("Rs. "+String.valueOf(a.getFarmprice()));
+        RelativeLayout btnUpdate=convertView.findViewById(R.id.btnBookNow);
         RelativeLayout btnViewFeatures=convertView.findViewById(R.id.btnViewFeatures);
+
+        byte[] decodedString = Base64.decode(a.getFarmpic(), Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        imgv.setImageBitmap(decodedByte);
         final ProgressDialog pd = new ProgressDialog(context);
         pd.setMessage("Please wait");
 
@@ -93,8 +101,7 @@ public class AdapterFarmhouses extends BaseAdapter {
         }
         
         if(view==0){
-            btnDelete.setVisibility(View.GONE);
-            btnUpdate.setVisibility(View.GONE);
+
             btnViewFeatures.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -108,42 +115,10 @@ public class AdapterFarmhouses extends BaseAdapter {
                     context.startActivity(intent);
 
 
-                    final ListView lv = new ListView(context);
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            String s= new farmhouseFeaturesDao().getAllFarmhouseFeatures(context,a);
-                            if(s.contains("farmhouseid")){
-                                Activity act = (Activity)context;
-                                act.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        features[] f = new Gson().fromJson(s,features[].class);
-                                        ArrayList<features> ff = new ArrayList<>();
-                                        Collections.addAll(ff,f);
-                                        AdapterFeatures aff = new AdapterFeatures(ff,context,0);
-                                        lv.setAdapter(aff);
-                                        ll.addView(lv);
-                                        ab.setView(ll);
-                                        ab.setTitle("Features");
-                                        ab.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.cancel();
-                                            }
-                                        });
-                                        ab.show();
-                                    }
-                                });
 
-
-
-                            }
-
-                        }
-                    }).start();
                 }
             });
+
         }
 
             return convertView;

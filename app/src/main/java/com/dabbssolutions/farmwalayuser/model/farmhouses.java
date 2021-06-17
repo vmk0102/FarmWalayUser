@@ -8,6 +8,7 @@ public class farmhouses  implements Serializable {
     private String farmlocation;
     private String farmprice;
     private int adminid;
+    private String farmpic;
 
     public int getFarmhouseid() {
         return farmhouseid;
@@ -47,5 +48,13 @@ public class farmhouses  implements Serializable {
 
     public void setAdminid(int adminid) {
         this.adminid = adminid;
+    }
+
+    public String getFarmpic() {
+        return farmpic;
+    }
+
+    public void setFarmpic(String farmpic) {
+        this.farmpic = farmpic;
     }
 }

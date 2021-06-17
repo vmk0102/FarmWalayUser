@@ -25,11 +25,18 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_height="wrap_content"
-            android:text="Bed Room with two Beds and a dressing set and AC with attached bath\n\nBig Hall with carpet, two fans and cushions\n\nLarge Swimming Pool (6 feet dept. starting from 3.5 feet, 20*40 Square
- feet) with Changing and Shower Rooms\n\nChildresn's Play Area with Swings, Slides, Meri-Go-Round and Seesaw"
+            android:text="name"
             android:textColor="@color/black"
             />
+        <ListView
+            android:id="@+id/ListViewFeatures"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtdetails"
+
+            />
 <LinearLayout
+    android:id="@+id/lll"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:layout_width="match_parent"

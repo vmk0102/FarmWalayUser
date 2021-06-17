@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,16 +18,32 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dabbssolutions.farmwalayuser.R;
+import com.dabbssolutions.farmwalayuser.adapters.AdapterFarmhousesFeatures;
+import com.dabbssolutions.farmwalayuser.adapters.AdapterFarmhousesPictures;
+import com.dabbssolutions.farmwalayuser.adapters.AdapterGuesthousePictures;
+import com.dabbssolutions.farmwalayuser.adapters.AdapterGuesthousesFeatures;
 import com.dabbssolutions.farmwalayuser.dao.bookingDao;
 import com.dabbssolutions.farmwalayuser.dao.farmhouseFeaturesDao;
+import com.dabbssolutions.farmwalayuser.dao.farmhousePicturesDao;
+import com.dabbssolutions.farmwalayuser.dao.guesthousePicturesDao;
+import com.dabbssolutions.farmwalayuser.dao.guesthousefeatureDao;
 import com.dabbssolutions.farmwalayuser.model.bookings;
+import com.dabbssolutions.farmwalayuser.model.farmhousefeatures;
+import com.dabbssolutions.farmwalayuser.model.farmhousepictures;
+import com.dabbssolutions.farmwalayuser.model.farmhouses;
+import com.dabbssolutions.farmwalayuser.model.guesthousefeatures;
+import com.dabbssolutions.farmwalayuser.model.guesthousepictures;
+import com.dabbssolutions.farmwalayuser.model.guesthouses;
 import com.github.florent37.singledateandtimepicker.dialog.DoubleDateAndTimePickerDialog;
+import com.google.gson.Gson;
 import com.tsongkha.spinnerdatepicker.DatePicker;
 import com.tsongkha.spinnerdatepicker.DatePickerDialog;
 import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -37,6 +54,7 @@ public class FarmHouseDetailsActivity extends AppCompatActivity {
     TextView btnBookNow;
     TextView details;
     DoubleDateAndTimePickerDialog.Builder doubleBuilder;
+    ListView lvpics,lvfeatures;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +65,88 @@ public class FarmHouseDetailsActivity extends AppCompatActivity {
         String Price=getIntent().getStringExtra("price");
         String Name=getIntent().getStringExtra("name");
         String[] id=getIntent().getStringExtra("id").split(":");
+        ArrayList<guesthousefeatures> gfs = new ArrayList<>();
+        ArrayList<farmhousefeatures> ffs = new ArrayList<>();
+        ArrayList<guesthousepictures>gps= new ArrayList<>();
+        ArrayList<farmhousepictures> fps = new ArrayList<>();
+        lvpics=(ListView)findViewById(R.id.lvPics);
+        lvfeatures=(ListView)findViewById(R.id.ListViewFeatures);
+        Log.v("ads",id[0]+" "+id[1]);
+        final Gson gson=new Gson();
+        if(id[0].toString().trim().toLowerCase()=="g"){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    guesthouses g = new guesthouses();
+                    g.setGuesthouseghid(Integer.parseInt(id[1]));
+                    String s = new guesthousefeatureDao().getAllGuestHouseFeature(FarmHouseDetailsActivity.this,g);
+                    String s1=new guesthousePicturesDao().getAllGuesthousePictures(FarmHouseDetailsActivity.this,g);
+
+                    if(s!=null){
+                        guesthousefeatures[] gf = gson.fromJson(s,guesthousefeatures[].class);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Collections.addAll(gfs,gf);
+                                AdapterGuesthousesFeatures aff = new AdapterGuesthousesFeatures(gfs,FarmHouseDetailsActivity.this,0);
+                                lvfeatures.setAdapter(aff);
+
+
+                            }
+                        });
+                    }
+                    if(s1!=null){
+                        guesthousepictures[] gp = gson.fromJson(s1,guesthousepictures[].class);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Collections.addAll(gps,gp);
+                                AdapterGuesthousePictures agp = new AdapterGuesthousePictures(gps,FarmHouseDetailsActivity.this,0);
+                                lvpics.setAdapter(agp);
+                            }
+                        });
+                    }
+                }
+            }).start();
+        }
+        if(true==true){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    farmhouses f = new farmhouses();
+                    f.setFarmhouseid(Integer.parseInt(id[1]));
+                    String s = new farmhouseFeaturesDao().getAllFarmhouseFeatures(FarmHouseDetailsActivity.this,f);
+                    String s1=new farmhousePicturesDao().getAllFarmhouseFeatures(FarmHouseDetailsActivity.this,f);
+                    Log.v("ffs",s);
+                    Log.v("fps",s);
+                    if(s!=null){
+                        farmhousefeatures[] gf = gson.fromJson(s,farmhousefeatures[].class);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Collections.addAll(ffs,gf);
+                                AdapterFarmhousesFeatures aff = new AdapterFarmhousesFeatures(ffs,FarmHouseDetailsActivity.this,0);
+                                lvfeatures.setAdapter(aff);
+
+
+                            }
+                        });
+                    }
+                    if(s1!=null){
+                        farmhousepictures[] gp = gson.fromJson(s1,farmhousepictures[].class);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Collections.addAll(fps,gp);
+                                AdapterFarmhousesPictures agp = new AdapterFarmhousesPictures(fps,FarmHouseDetailsActivity.this,0);
+                                lvpics.setAdapter(agp);
+                            }
+                        });
+                    }
+
+                }
+            }).start();
+        }
 
 
         details=(TextView)findViewById(R.id.txtdetails);
@@ -72,6 +172,7 @@ public class FarmHouseDetailsActivity extends AppCompatActivity {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 b.setCheckinDate(year+"-"+monthOfYear+1+"-"+dayOfMonth);
+                                Toast.makeText(FarmHouseDetailsActivity.this, "Set Checkout Date", Toast.LENGTH_SHORT).show();
                                 new SpinnerDatePickerDialogBuilder()
                                         .context(FarmHouseDetailsActivity.this)
                                         .callback(new DatePickerDialog.OnDateSetListener() {

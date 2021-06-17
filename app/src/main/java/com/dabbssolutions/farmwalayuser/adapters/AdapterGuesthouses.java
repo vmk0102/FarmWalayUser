@@ -108,39 +108,7 @@ public class AdapterGuesthouses extends BaseAdapter {
                     context.startActivity(intent);
 
 
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            String s= new guesthousefeatureDao().getAllGuestHouseFeature(context,a);
-                            if(s.contains("featureid")){
-                                Activity act = (Activity)context;
-                                act.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        guesthousefeatures[] g = new Gson().fromJson(s,guesthousefeatures[].class);
-                                        ArrayList<guesthousefeatures> gf = new ArrayList<>();
-                                        Collections.addAll(gf,g);
-                                        AdapterGuesthousesFeatures aff = new AdapterGuesthousesFeatures(gf,context,0);
-                                        lv.setAdapter(aff);
-                                        ll.addView(lv);
-                                        ab.setView(ll);
-                                        ab.setTitle("Features");
-                                        ab.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.cancel();
-                                            }
-                                        });
-                                        ab.show();
-                                    }
-                                });
 
-
-
-                            }
-
-                        }
-                    }).start();
                 }
             });
         }else if(view==1){

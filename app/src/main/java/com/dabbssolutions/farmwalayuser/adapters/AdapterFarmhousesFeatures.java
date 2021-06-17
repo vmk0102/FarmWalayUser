@@ -9,29 +9,29 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.dabbssolutions.farmwalayuser.R;
-import com.dabbssolutions.farmwalayuser.model.guesthousefeatures;
+import com.dabbssolutions.farmwalayuser.model.farmhousefeatures;
 
 import java.util.ArrayList;
 
-public class AdapterGuesthousesFeatures extends BaseAdapter {
-    ArrayList<guesthousefeatures> guesthousefeatures;
+public class AdapterFarmhousesFeatures extends BaseAdapter {
+    ArrayList<farmhousefeatures> farmhouses;
     Context context;
     int view;
     String s;
-    public AdapterGuesthousesFeatures(ArrayList<guesthousefeatures> guesthousefeatures, Context context, int view){
-        this.guesthousefeatures=guesthousefeatures;
+    public AdapterFarmhousesFeatures(ArrayList<farmhousefeatures> farmhouses, Context context, int view){
+        this.farmhouses=farmhouses;
         this.context=context;
         this.view=view;
     }
 
     @Override
     public int getCount() {
-        return guesthousefeatures.size();
+        return farmhouses.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return guesthousefeatures.get(position);
+        return farmhouses.get(position);
     }
 
     @Override
@@ -56,11 +56,11 @@ public class AdapterGuesthousesFeatures extends BaseAdapter {
 
 
         }
-        guesthousefeatures a =(guesthousefeatures) getItem(position);
+        farmhousefeatures a =(farmhousefeatures) getItem(position);
         CheckBox cb = convertView.findViewById(R.id.txtFeatureChecked);
         cb.setVisibility(View.GONE);
         TextView txtFarmName= convertView.findViewById(R.id.txtFeatureName);
-        txtFarmName.setText(a.getFeaturename());
+        txtFarmName.setText(a.getFeatureName());
 
         if(position%2==0){
 

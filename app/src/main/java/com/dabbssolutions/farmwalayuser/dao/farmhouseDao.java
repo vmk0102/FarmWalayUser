@@ -180,7 +180,7 @@ public class farmhouseDao {
 
         try {
 
-            String getUrl = "http://dabbssolutions.org/api/farmHousesAPI/getAllFarmHouses.php";//https://www.pakistanscrabble.org/api.php";
+            String getUrl = "http://dabbssolutions.org/api/farmHousesAPI/getfarmhousewithpics.php";//https://www.pakistanscrabble.org/api.php";
             Log.v("SOMEONE ONCE SAID", "postURL: " + getUrl);
 
             HttpClient httpClient = new DefaultHttpClient();
