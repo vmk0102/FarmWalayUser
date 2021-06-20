@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingRight="20dp"
+
+    >
+    <TableLayout
+        android:id="@+id/infoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/txtFeatureChecked"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/txtFeatureName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                />
+
+
+        </TableRow>
+
+    </TableLayout>
+
+
+
+
+</RelativeLayout>

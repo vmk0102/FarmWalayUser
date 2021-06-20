@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greenapp"
+    android:fillViewport="true"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/white"
+
+        android:background="@drawable/roundedtopcorner"
+        android:layout_height="match_parent" >
+        <TextView
+            android:layout_marginTop="100dp"
+            android:id="@+id/txtname"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="name"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/txtdetails"
+            android:layout_below="@id/txtname"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="Location"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/txtFeatures"
+            android:layout_below="@id/txtdetails"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="Location"
+            android:textColor="@color/black"
+            />
+
+        <LinearLayout
+    android:id="@+id/lll"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_below="@+id/txtFeatures"
+    android:orientation="vertical"
+    >
+    <GridView
+        android:id="@+id/lvPics"
+        android:numColumns="2"
+        android:layout_width="match_parent"
+        android:layout_height="320dp" />
+        <TextView
+        android:id="@+id/btnBookNow"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="Book Now"
+            android:clickable="true"
+            android:layout_marginTop="20dp"
+        android:gravity="center"
+
+        android:layout_gravity="center"
+        android:background="@drawable/roundedbtns"
+        android:backgroundTint="@color/orangeColor"
+        android:textColor="@color/black"
+        android:layout_width="150dp"
+        android:layout_height="40dp" />
+
+</LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/roundedcircle"
+        android:elevation="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:elevation="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="150dp"
+            android:src="@drawable/fm_transparent"
+            android:layout_centerHorizontal="true"
+            android:layout_height="150dp" />
+    </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greenapp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/white"
+
+        android:background="@drawable/roundedtopcorner"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/txtPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="85dp"
+            android:layout_marginRight="30dp"
+            android:paddingLeft="30dp"
+            android:text="Reset Your Password"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/txtPhoneNumber"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/roundedbtn"
+            android:backgroundTint="@color/lightgreenapp"
+            android:hint="Phone Number"
+            android:inputType="textPassword"
+            android:paddingLeft="30dp"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/forgotpass"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_below="@id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:id="@+id/btnLogin"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/roundedbtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_below="@id/forgotpass">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Request New Password"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/roundedcircle"
+        android:elevation="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:elevation="10dp"
+            android:src="@drawable/fm_transparent" />
+    </LinearLayout>
+
+
+    </RelativeLayout>
+</ScrollView>

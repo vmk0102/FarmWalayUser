@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingRight="20dp"
+    ><LinearLayout
+    android:id="@+id/detailslayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/farmpic"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/farmhouse"
+        app:riv_corner_radius="10dp" />
+    <TableLayout
+        android:id="@+id/infoLayout"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+
+
+            <TextView
+                android:id="@+id/txtFarmName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="Wali Muhammad Khubaib"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </TableRow>
+        <TableRow>
+
+
+            <TextView
+                android:id="@+id/txtLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="Karachi,Pakistan"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </TableRow>
+        <TableRow>
+
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="20dp"
+                android:text="Rs. 2312"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+    </TableLayout>
+</LinearLayout>
+
+<LinearLayout
+    android:layout_below="@+id/detailslayout"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_marginTop="10dp"
+    android:layout_centerHorizontal="true"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/btnViewFeatures"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/roundedbtn"
+        android:backgroundTint="@color/greenapp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="View Details"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btnBookNow"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/roundedbtn"
+        android:backgroundTint="@color/orangeColor"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Book Now"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
+
+</RelativeLayout>
+

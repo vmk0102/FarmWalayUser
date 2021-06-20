@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greenapp"
+    android:fillViewport="true"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+
+            android:background="@drawable/roundedtopcorner"
+            android:backgroundTint="@color/white">
+
+            <TextView
+                android:id="@+id/admin_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:paddingBottom="20dp"
+                android:text="Create an Account"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/first_name"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/admin_header"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/roundedbtn"
+                android:backgroundTint="@color/lightgreenapp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="First Name">
+
+            </EditText>
+
+
+            <EditText
+                android:id="@+id/last_name"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/first_name"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/roundedbtn"
+                android:backgroundTint="@color/lightgreenapp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Last Name">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/admin_cnic"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/last_name"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/roundedbtn"
+                android:backgroundTint="@color/lightgreenapp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="CNIC">
+
+
+            </EditText>
+
+
+            <EditText
+                android:id="@+id/admin_phone_no"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/admin_cnic"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/roundedbtn"
+                android:backgroundTint="@color/lightgreenapp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Phone Number">
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/admin_phone_no"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/roundedbtn"
+                android:backgroundTint="@color/lightgreenapp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+            <RelativeLayout
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/password"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="80dp"
+                android:background="@drawable/roundedbtn">
+
+                <TextView
+                    android:id="@+id/txtSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Create"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/roundedcircle"
+        android:elevation="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:elevation="10dp"
+            android:src="@drawable/fm_transparent" />
+    </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>
