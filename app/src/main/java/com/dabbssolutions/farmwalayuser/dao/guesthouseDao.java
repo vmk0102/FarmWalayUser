@@ -179,7 +179,9 @@ public class guesthouseDao {
 
         try {
 
-            String getUrl = "http://dabbssolutions.org/api/guestHousesAPI/getAllGuestHouses.php";//https://www.pakistanscrabble.org/api.php";
+            //String getUrl = "http://dabbssolutions.org/api/guestHousesAPI/getAllGuestHouses.php";//https://www.pakistanscrabble.org/api.php";
+            String getUrl = "http://dabbssolutions.org/api/guestHousesAPI/getguesthousewithpics.php"; ////https://www.pakistanscrabble.org/api.php";//https://www.pakistanscrabble.org/api.php";
+
             Log.v("SOMEONE ONCE SAID", "postURL: " + getUrl);
 
             HttpClient httpClient = new DefaultHttpClient();

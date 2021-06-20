@@ -37,6 +37,10 @@
         <activity android:name=".activities.ActivityAddUsers" >
 
         </activity>
+
+        <activity android:name=".activities.GuestHouseDetailsActivity" >
+
+        </activity>
     </application>
 
 </manifest>

@@ -41,8 +41,8 @@ public class bookingDao {
 
             // add your data
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-            nameValuePairs.add(new BasicNameValuePair("checkindate", b.getCheckindate()));
-            nameValuePairs.add(new BasicNameValuePair("checkoutdate", b.getCheckoutdate()));
+            nameValuePairs.add(new BasicNameValuePair("checkindate", b.getCheckinDate()));
+            nameValuePairs.add(new BasicNameValuePair("checkoutdate", b.getCheckinDate()));
             nameValuePairs.add(new BasicNameValuePair("static_custname", b.getStatic_custname()));
             nameValuePairs.add(new BasicNameValuePair("static_custnumber", b.getStatic_custnumber()));
             nameValuePairs.add(new BasicNameValuePair("uid", String.valueOf(b.getUid())));

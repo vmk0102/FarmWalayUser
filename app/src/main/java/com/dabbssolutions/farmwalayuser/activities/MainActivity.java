@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 farmHouseBtn.setBackgroundResource(R.drawable.roundedbtn);
                 guestHouseBtn.setBackgroundResource(R.drawable.round_btn_disable);
                 pd.show();
+
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 try{
-                                    pd.cancel();
+                                   pd.cancel();
                                     guesthouses[] u = new Gson().fromJson(s,guesthouses[].class);
                                     ArrayList<guesthouses> userslist = new ArrayList();
                                     ArrayList<guesthouses> userslist2 = new ArrayList();

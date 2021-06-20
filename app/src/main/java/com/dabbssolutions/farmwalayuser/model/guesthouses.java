@@ -8,6 +8,7 @@ public class guesthouses  implements Serializable {
     private String guesthousename;
     private float guesthouseprice;
     private int adminid;
+    private String guestpic;
 
     public int getGuesthouseid() {
         return guesthouseid;
@@ -47,6 +48,18 @@ public class guesthouses  implements Serializable {
 
     public void setAdminid(int adminid) {
         this.adminid = adminid;
+    }
+
+    public void setGuesthouseid(int guesthouseid) {
+        this.guesthouseid = guesthouseid;
+    }
+
+    public String getGuestpic() {
+        return guestpic;
+    }
+
+    public void setGuestpic(String guestpic) {
+        this.guestpic = guestpic;
     }
 }
 

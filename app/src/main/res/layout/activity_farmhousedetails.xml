@@ -20,35 +20,59 @@
         android:layout_height="match_parent" >
         <TextView
             android:layout_marginTop="100dp"
-            android:id="@+id/txtdetails"
+            android:id="@+id/txtname"
             android:layout_width="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
             android:text="name"
             android:textColor="@color/black"
             />
-        <ListView
-            android:id="@+id/ListViewFeatures"
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/txtdetails"
+            android:layout_below="@id/txtname"
             android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtdetails"
-
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="Location"
+            android:textColor="@color/black"
             />
-<LinearLayout
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/txtFeatures"
+            android:layout_below="@id/txtdetails"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="Location"
+            android:textColor="@color/black"
+            />
+
+        <LinearLayout
     android:id="@+id/lll"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
-    android:layout_below="@+id/txtdetails"
+    android:layout_below="@+id/txtFeatures"
     android:orientation="vertical"
     >
-    <ListView
+    <GridView
         android:id="@+id/lvPics"
+        android:numColumns="2"
         android:layout_width="match_parent"
-        android:layout_height="280dp" />
+        android:layout_height="320dp" />
         <TextView
         android:id="@+id/btnBookNow"
         android:layout_centerVertical="true"

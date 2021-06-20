@@ -6,26 +6,42 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dabbssolutions.farmwalayuser.R;
 import com.dabbssolutions.farmwalayuser.activities.ActivityViewDetails;
 import com.dabbssolutions.farmwalayuser.activities.FarmHouseDetailsActivity;
+import com.dabbssolutions.farmwalayuser.activities.GuestHouseDetailsActivity;
+import com.dabbssolutions.farmwalayuser.dao.bookingDao;
 import com.dabbssolutions.farmwalayuser.dao.guesthouseDao;
 import com.dabbssolutions.farmwalayuser.dao.guesthousefeatureDao;
+import com.dabbssolutions.farmwalayuser.model.bookings;
 import com.dabbssolutions.farmwalayuser.model.guesthousefeatures;
 import com.dabbssolutions.farmwalayuser.model.guesthouses;
 import com.google.gson.Gson;
+import com.tsongkha.spinnerdatepicker.DatePicker;
+import com.tsongkha.spinnerdatepicker.DatePickerDialog;
+import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class AdapterGuesthouses extends BaseAdapter {
     ArrayList<guesthouses> guesthouses;
@@ -76,10 +92,20 @@ public class AdapterGuesthouses extends BaseAdapter {
         TextView txtFarmPrice= convertView.findViewById(R.id.txtPrice);
         txtFarmName.setText(a.getGuesthousename());
         txtFarmLocation.setText(a.getGuesthouselocation());
-        txtFarmPrice.setText(String.valueOf(a.getGuesthouseprice()));
-        RelativeLayout btnDelete=convertView.findViewById(R.id.btnDelete);
-        RelativeLayout btnUpdate=convertView.findViewById(R.id.btnUpdate);
+        txtFarmPrice.setText("Rs. "+ String.valueOf(a.getGuesthouseprice()));
+        RelativeLayout btnBookNow=convertView.findViewById(R.id.btnBookNow);
         RelativeLayout btnViewFeatures=convertView.findViewById(R.id.btnViewFeatures);
+        ImageView imgv=(convertView).findViewById(R.id.farmpic);
+
+        Log.v("pics","pic +"+position+" "+String.valueOf(a.getGuestpic()));
+        if(a.getGuestpic()!=null) {
+            byte[] decodedString = Base64.decode(a.getGuestpic(), Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            imgv.setImageBitmap(decodedByte);
+        }else{
+            imgv.setImageResource(R.drawable.nopic);
+
+        }
         final ProgressDialog pd = new ProgressDialog(context);
         pd.setMessage("Please wait");
 
@@ -91,15 +117,13 @@ public class AdapterGuesthouses extends BaseAdapter {
         }
         
         if(view==0){
-            btnDelete.setVisibility(View.GONE);
-            btnUpdate.setVisibility(View.GONE);
             btnViewFeatures.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     final AlertDialog.Builder ab = new AlertDialog.Builder(context);
                     final LinearLayout ll = new LinearLayout(context);
                     final ListView lv = new ListView(context);
-                    Intent intent = new Intent(context, FarmHouseDetailsActivity.class);
+                    Intent intent = new Intent(context, GuestHouseDetailsActivity.class);
                     intent.putExtra("id","g:"+String.valueOf(a.getGuesthouseid()));
                     intent.putExtra("name",a.getGuesthousename());
                     intent.putExtra("price",String.valueOf(a.getGuesthouseprice()));
@@ -111,70 +135,104 @@ public class AdapterGuesthouses extends BaseAdapter {
 
                 }
             });
-        }else if(view==1){
-            btnUpdate.setVisibility(View.GONE);
-            btnViewFeatures.setVisibility(View.GONE);
-            btnDelete.setOnClickListener(new View.OnClickListener() {
+            btnBookNow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    pd.show();
-
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            s="false";
-                            s=new guesthouseDao().deleteGuestHouses(a,context);
-                            Activity act=(Activity)context;
-                            if(s.toLowerCase().contains("true")){
-                                s=new guesthousefeatureDao().deleteGuestHouseFeature(a,context);
-                            }else{
-                                s="false";
-                            }
-                            act.runOnUiThread(new Runnable() {
+                    final bookings b = new bookings();
+                    SharedPreferences sharedPreferences=context.getSharedPreferences("mypref",Context.MODE_PRIVATE);
+                    SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Toast.makeText(context, "Select CheckIn Date", Toast.LENGTH_SHORT).show();
+                    new SpinnerDatePickerDialogBuilder()
+                            .context(context)
+                            .callback(new DatePickerDialog.OnDateSetListener() {
                                 @Override
-                                public void run() {
-                                    pd.cancel();
+                                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                    b.setCheckinDate(year+"-"+monthOfYear+1+"-"+dayOfMonth);
+                                    Toast.makeText(context, "Set Checkout Date", Toast.LENGTH_SHORT).show();
+                                    new SpinnerDatePickerDialogBuilder()
+                                            .context(context)
+                                            .callback(new DatePickerDialog.OnDateSetListener() {
+                                                @Override
+                                                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                                    b.setCheckoutDate(year+"-"+monthOfYear+1+"-"+dayOfMonth);
+                                                    pd.show();
+                                                    try {
 
-                                    if(s.toLowerCase().contains("true")) {
-                                        AlertDialog.Builder ab = new AlertDialog.Builder(context);
-                                        ab.setMessage("Feature deleted successfully");
-                                        ab.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                ((Activity) context).finish();
-                                                dialog.cancel();
-                                            }
-                                        }).show();
-                                    }else {
-                                        AlertDialog.Builder ab = new AlertDialog.Builder(context);
-                                        ab.setMessage("Error adding Feature");
-                                        ab.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.cancel();
-                                            }
-                                        }).show();
-                                    }
+                                                        Date date1 = myFormat.parse(b.getCheckinDate());
+                                                        Date date2 = myFormat.parse(b.getCheckoutDate());
+                                                        long diff = date2.getTime() - date1.getTime();
+                                                        b.setBookingprice((TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)+1) * a.getGuesthouseprice());
+                                                        b.setIsConfirmed(1);
+
+                                                        int uid=Integer.parseInt(sharedPreferences.getString("uid","0"));
+                                                        b.setUid(uid);
+                                                            b.setGuesthouseid(a.getGuesthouseid());
+
+                                                        new Thread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+
+                                                                String s = new bookingDao().insertBookings(b,context);
+                                                                Activity act = (Activity)context;
+                                                                act.runOnUiThread(new Runnable() {
+                                                                    @Override
+                                                                    public void run() {
+                                                                        try {
+                                                                            pd.cancel();
+                                                                            androidx.appcompat.app.AlertDialog.Builder ab = new androidx.appcompat.app.AlertDialog.Builder(context);
+                                                                            if (s.toLowerCase().contains("true")) {
+
+                                                                                ab.setMessage("Your booking has been confirmed. Thank You for chosing farmwalay. Your total bill is Rs." + b.getBookingprice());
+                                                                            }else{
+                                                                                ab.setMessage("Error confirming your booking. Please try again");
+                                                                            }
+                                                                            ab.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                                @Override
+                                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                                    dialog.cancel();
+                                                                                }
+                                                                            }).show();
+
+                                                                        }catch (Exception e){
+                                                                            Toast.makeText(context, "Please try again."+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                        }
+                                                                    }
+                                                                });
+                                                            }
+                                                        }).start();
+                                                    }catch (Exception e){
+                                                        Log.v("error formatting date: ",e.getMessage());
+                                                    }
+                                                }
+                                            })
+
+                                            .spinnerTheme(R.style.NumberPickerStyle)
+                                            .showTitle(true)
+                                            .showDaySpinner(true)
+                                            .defaultDate(2021, 0, 1)
+                                            .maxDate(2050, 0, 1)
+                                            .minDate(2021, 0, 1)
+                                            .build()
+                                            .show();
+
                                 }
-                            });
-                        }
-                    }).start();
-                }
-            });
-        }
-        else if(view==2){
-            btnDelete.setVisibility(View.GONE);
-            btnViewFeatures.setVisibility(View.GONE);
-            btnUpdate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Intent i = new Intent(context, ActivityUpdateFar.class);
-                    //i.putExtra("item",a);
-                    //i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //context.startActivity(i);
+                            })
+
+                            .spinnerTheme(R.style.NumberPickerStyle)
+                            .showTitle(true)
+                            .showDaySpinner(true)
+                            .defaultDate(2017, 0, 1)
+                            .maxDate(2050, 0, 1)
+                            .minDate(2000, 0, 1)
+                            .build()
+                            .show();
+
+
+
 
                 }
             });
+
         }
 
             return convertView;

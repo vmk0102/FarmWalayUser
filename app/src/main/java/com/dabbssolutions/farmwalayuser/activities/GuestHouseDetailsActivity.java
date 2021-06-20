@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -41,16 +40,15 @@ import com.tsongkha.spinnerdatepicker.DatePicker;
 import com.tsongkha.spinnerdatepicker.DatePickerDialog;
 import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
-public class FarmHouseDetailsActivity extends AppCompatActivity {
+public class GuestHouseDetailsActivity extends AppCompatActivity {
     RelativeLayout btnViewDetails;
     TextView btnBookNow;
     TextView details;
@@ -71,70 +69,65 @@ public class FarmHouseDetailsActivity extends AppCompatActivity {
         ArrayList<farmhousefeatures> ffs = new ArrayList<>();
         ArrayList<guesthousepictures>gps= new ArrayList<>();
         ArrayList<farmhousepictures> fps = new ArrayList<>();
+        lvpics=(GridView)findViewById(R.id.lvPics);
         Log.v("ads",id[0]+" "+id[1]);
-        final Gson gson= new Gson();
-        ProgressDialog pd = new ProgressDialog(FarmHouseDetailsActivity.this);
-        pd.setMessage("Loading details, please wait");
+        final Gson gson=new Gson();
+        ProgressDialog pd = new ProgressDialog(GuestHouseDetailsActivity.this);
+        pd.setMessage("Loading details. Please wait.");
         details=(TextView)findViewById(R.id.txtdetails);
         final StringBuilder sb = new StringBuilder();
         TextView btnBookNow = (TextView) findViewById(R.id.btnBookNow);
-        TextView txtname=(TextView)findViewById(R.id.txtname);
-        txtFeatures=(TextView)findViewById(R.id.txtFeatures);
-        lvpics=(GridView)findViewById(R.id.lvPics);
-        txtname.setText(Name);
+        TextView txtName=(TextView)findViewById(R.id.txtname);
+        txtFeatures=(TextView)findViewById(R.id.txtFeatures); 
         sb.append(
                 "Location: "+Location+"\t" +
                 "Price: "+Price);
         details.setText(sb);
-        pd.show();
+        txtName.setText(Name);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    farmhouses f = new farmhouses();
-                    f.setFarmhouseid(Integer.parseInt(id[1]));
-                    String s = new farmhouseFeaturesDao().getAllFarmhouseFeatures(FarmHouseDetailsActivity.this,f);
-                    String s1=new farmhousePicturesDao().getAllFarmhouseFeatures(FarmHouseDetailsActivity.this,f);
-                    Log.v("ffs",s);
-                    Log.v("fps",s);
-
+                    guesthouses g = new guesthouses();
+                    g.setGuesthouseghid(Integer.parseInt(id[1]));
+                    String s = new guesthousefeatureDao().getAllGuestHouseFeature(GuestHouseDetailsActivity.this,g);
+                    String s1=new guesthousePicturesDao().getAllGuesthousePictures(GuestHouseDetailsActivity.this,g);
 
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                pd.cancel();
                                 if(s!=null) {
-                                    farmhousefeatures[] gf = gson.fromJson(s, farmhousefeatures[].class);
+                                    guesthousefeatures[] gf = gson.fromJson(s, guesthousefeatures[].class);
                                     StringBuilder sb = new StringBuilder();
                                     sb.append("Features: ");
                                     for(int i =0;i<gf.length;i++){
                                         if(i!=gf.length-1) {
-                                            sb.append(gf[i].getFeatureName() + ", ");
+                                            sb.append(gf[i].getFeaturename() + ", ");
                                         }else {
-                                            sb.append(gf[i].getFeatureName());
+                                            sb.append(gf[i].getFeaturename());
                                         }
                                     }
                                     txtFeatures.setText(sb);
 
+
                                 }
-                                if(s1!=null){
-                                    farmhousepictures[] gp = gson.fromJson(s1,farmhousepictures[].class);
-                                    Collections.addAll(fps,gp);
-                                    AdapterFarmhousesPictures agp = new AdapterFarmhousesPictures(fps,FarmHouseDetailsActivity.this,0);
-                                    lvpics.setAdapter(agp);
+                                   if(s1!=null) {
+                                       guesthousepictures[] gp = gson.fromJson(s1, guesthousepictures[].class);
+
+                                       Collections.addAll(gps, gp);
+                                       AdapterGuesthousePictures agp = new AdapterGuesthousePictures(gps, GuestHouseDetailsActivity.this, 0);
+                                       lvpics.setAdapter(agp);
+
+                                   }
+                                    pd.cancel();
+                                    pd.setMessage("Verifying booking please wait");
                                 }
-                                pd.setMessage("Verifying booking please wait");
-
-
-
 
                             }
-                        });
-                    }
+                        );
 
+                }
 
             }).start();
-
-
 
 
 
@@ -144,16 +137,16 @@ public class FarmHouseDetailsActivity extends AppCompatActivity {
 
                 final bookings b = new bookings();
                 SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Toast.makeText(FarmHouseDetailsActivity.this, "Select CheckIn Date", Toast.LENGTH_SHORT).show();
+                Toast.makeText(GuestHouseDetailsActivity.this, "Select CheckIn Date", Toast.LENGTH_SHORT).show();
                 new SpinnerDatePickerDialogBuilder()
-                        .context(FarmHouseDetailsActivity.this)
+                        .context(GuestHouseDetailsActivity.this)
                         .callback(new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 b.setCheckinDate(year+"-"+monthOfYear+1+"-"+dayOfMonth);
-                                Toast.makeText(FarmHouseDetailsActivity.this, "Set Checkout Date", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(GuestHouseDetailsActivity.this, "Set Checkout Date", Toast.LENGTH_SHORT).show();
                                 new SpinnerDatePickerDialogBuilder()
-                                        .context(FarmHouseDetailsActivity.this)
+                                        .context(GuestHouseDetailsActivity.this)
                                         .callback(new DatePickerDialog.OnDateSetListener() {
                                             @Override
                                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -179,13 +172,13 @@ public class FarmHouseDetailsActivity extends AppCompatActivity {
                                                         @Override
                                                         public void run() {
 
-                                                            String s = new bookingDao().insertBookings(b,FarmHouseDetailsActivity.this);
+                                                            String s = new bookingDao().insertBookings(b, GuestHouseDetailsActivity.this);
                                                             runOnUiThread(new Runnable() {
                                                                 @Override
                                                                 public void run() {
                                                                     try {
                                                                         pd.cancel();
-                                                                        AlertDialog.Builder ab = new AlertDialog.Builder(FarmHouseDetailsActivity.this);
+                                                                        AlertDialog.Builder ab = new AlertDialog.Builder(GuestHouseDetailsActivity.this);
                                                                         if (s.toLowerCase().contains("true")) {
 
                                                                             ab.setMessage("Your booking has been confirmed. Thank You for chosing farmwalay. Your total bill is Rs." + b.getBookingprice());
@@ -200,7 +193,7 @@ public class FarmHouseDetailsActivity extends AppCompatActivity {
                                                                         }).show();
 
                                                                     }catch (Exception e){
-                                                                        Toast.makeText(FarmHouseDetailsActivity.this, "Please try again."+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                        Toast.makeText(GuestHouseDetailsActivity.this, "Please try again."+e.getMessage(), Toast.LENGTH_SHORT).show();
                                                                     }
                                                                 }
                                                             });
