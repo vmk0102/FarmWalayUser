@@ -114,7 +114,7 @@ public class ActivityLogin extends AppCompatActivity {
                                 if(a.length>0) {
                                     sharedPreferences.edit().putString("uid",String.valueOf(a[0].getUid())).apply();
                                     startActivity(new Intent(ActivityLogin.this, MainActivity.class));
-                                    finish();
+                                    ActivityLogin.this.finish();
                                 }else {
                                     Toast.makeText(ActivityLogin.this, "Invalid phone no. or password", Toast.LENGTH_SHORT).show();
                                 }
