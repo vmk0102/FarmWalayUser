@@ -1,5 +1,7 @@
 package com.dabbssolutions.farmwalayuser.activities;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,12 +11,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.dabbssolutions.farmwalayuser.R;
 import com.dabbssolutions.farmwalayuser.adapters.AdapterFarmhouses;
@@ -42,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
         guestHouseBtn=(RelativeLayout)findViewById(R.id.guesthousebtn);
         farmHouseBtn=(RelativeLayout)findViewById(R.id.farmhousebtn);
         lv=(ListView)findViewById(R.id.lvItems);
+
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.custom_toolbar);
+        getSupportActionBar().setElevation(0);
+        View view = getSupportActionBar().getCustomView();
+        Toolbar toolbar=(Toolbar) view.getParent();
+        toolbar.setContentInsetsAbsolute(0,0);
+
         final ProgressDialog pd = new ProgressDialog(MainActivity.this);
         pd.setMessage("Please wait");
 
@@ -211,5 +226,30 @@ public class MainActivity extends AppCompatActivity {
 //      SHOWING FARMHOUSE LIST BY DEFUALT ON PAGE LOAD UP
 //      TRIGGERING THE ON CLICK LISTENER
         farmHouseBtn.performClick();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater=new MenuInflater(MainActivity.this);
+        menuInflater.inflate(R.menu.menu,menu);
+        return  true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.btnLogout){
+            startActivity(new Intent(MainActivity.this,ActivityLogin.class));
+            finish();
+            return  true;
+        }
+        else if(item.getItemId()==R.id.btnMyBookings){
+            return  true;
+        }
+        else if(item.getItemId()==R.id.btnProfile){
+            startActivity(new Intent(MainActivity.this,ActivityMyProfile.class));
+        }
+        return  false;
+
     }
 }

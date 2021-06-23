@@ -9,7 +9,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.dabbssolutions.farmwalayuser.R;
 import com.dabbssolutions.farmwalayuser.dao.UserDao;
@@ -28,6 +30,13 @@ public class ActivitySignup extends AppCompatActivity {
         Cnic=(EditText)findViewById(R.id.admin_cnic);
         Pass=(EditText)findViewById(R.id.password);
         btnSave=(RelativeLayout)findViewById(R.id.btnSave);
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.custom_toolbar);
+        getSupportActionBar().setElevation(0);
+        View view = getSupportActionBar().getCustomView();
+        Toolbar toolbar=(Toolbar) view.getParent();
+        toolbar.setContentInsetsAbsolute(0,0);
         final ProgressDialog pd = new ProgressDialog(ActivitySignup.this);
         pd.setMessage("Please wait");
 
@@ -82,4 +91,5 @@ public class ActivitySignup extends AppCompatActivity {
         });
 
     }
+
 }

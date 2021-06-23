@@ -56,7 +56,7 @@ public class ActivityAddUsers extends AppCompatActivity {
                           public void run() {
                               if(s.toLowerCase().contains("true")) {
                                   AlertDialog.Builder ab = new AlertDialog.Builder(com.dabbssolutions.farmwalayuser.activities.ActivityAddUsers.this);
-                                  ab.setMessage("Feature added successfully");
+                                  ab.setMessage("User added successfully");
                                   ab.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                       @Override
                                       public void onClick(DialogInterface dialog, int which) {

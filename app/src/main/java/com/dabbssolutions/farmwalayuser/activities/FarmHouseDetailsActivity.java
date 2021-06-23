@@ -3,10 +3,14 @@ package com.dabbssolutions.farmwalayuser.activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -15,8 +19,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.dabbssolutions.farmwalayuser.R;
 import com.dabbssolutions.farmwalayuser.adapters.AdapterFarmhousesFeatures;
@@ -62,6 +69,13 @@ public class FarmHouseDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmhousedetails);
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.custom_toolbar);
+        getSupportActionBar().setElevation(0);
+        View view = getSupportActionBar().getCustomView();
+        Toolbar toolbar=(Toolbar) view.getParent();
+        toolbar.setContentInsetsAbsolute(0,0);
         btnBookNow=(TextView) findViewById(R.id.btnBookNow);
         String Location=getIntent().getStringExtra("location");
         String Price=getIntent().getStringExtra("price");
@@ -84,7 +98,7 @@ public class FarmHouseDetailsActivity extends AppCompatActivity {
         txtname.setText(Name);
         sb.append(
                 "Location: "+Location+"\t" +
-                "Price: "+Price);
+                "Price: Rs. "+Price);
         details.setText(sb);
         pd.show();
             new Thread(new Runnable() {
@@ -240,6 +254,31 @@ public class FarmHouseDetailsActivity extends AppCompatActivity {
         });
 
 
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater=new MenuInflater(FarmHouseDetailsActivity.this);
+        menuInflater.inflate(R.menu.menu,menu);
+        return  true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.btnLogout){
+            startActivity(new Intent(FarmHouseDetailsActivity.this,ActivityLogin.class));
+            finish();
+            return  true;
+        }
+        else if(item.getItemId()==R.id.btnMyBookings){
+            return  true;
+        }
+        else if(item.getItemId()==R.id.btnProfile){
+            startActivity(new Intent(FarmHouseDetailsActivity.this,ActivityMyProfile.class));
+            startActivity(new Intent(FarmHouseDetailsActivity.this,ActivityMyProfile.class));
+        }
+        return  false;
 
     }
 

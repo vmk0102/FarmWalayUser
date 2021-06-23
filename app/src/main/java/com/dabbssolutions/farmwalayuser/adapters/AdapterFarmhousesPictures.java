@@ -66,13 +66,7 @@ public class AdapterFarmhousesPictures extends BaseAdapter {
 
 
 
-        if(position%2==0){
 
-            convertView.setBackgroundResource(R.color.lightgreenapp);
-        }else {
-            convertView.setBackgroundResource(R.color.white);
-        }
-        
 
 
             return convertView;

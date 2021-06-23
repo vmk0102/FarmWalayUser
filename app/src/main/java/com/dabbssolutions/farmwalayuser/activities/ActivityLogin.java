@@ -66,7 +66,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.dabbssolutions.farmwalayuser.activities.ActivitySignup;
 import com.dabbssolutions.farmwalayuser.activities.MainActivity;
@@ -86,6 +88,13 @@ public class ActivityLogin extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login);
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.custom_toolbar);
+        getSupportActionBar().setElevation(0);
+        View view = getSupportActionBar().getCustomView();
+        Toolbar toolbar=(Toolbar) view.getParent();
+        toolbar.setContentInsetsAbsolute(0,0);
         btnLogin=(RelativeLayout)findViewById(R.id.btnLogin);
         requestPass=(TextView)findViewById(R.id.txtForgotPass);
         createaccount=(TextView)findViewById(R.id.txtRegisterNow);
@@ -113,6 +122,8 @@ public class ActivityLogin extends AppCompatActivity {
                                 pd.cancel();
                                 if(a.length>0) {
                                     sharedPreferences.edit().putString("uid",String.valueOf(a[0].getUid())).apply();
+                                    sharedPreferences.edit().putString("userprofile",s).apply();
+
                                     startActivity(new Intent(ActivityLogin.this, MainActivity.class));
                                     ActivityLogin.this.finish();
                                 }else {
