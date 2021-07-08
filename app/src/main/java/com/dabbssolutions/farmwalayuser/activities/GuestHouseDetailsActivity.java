@@ -41,7 +41,7 @@ import com.dabbssolutions.farmwalayuser.model.farmhouses;
 import com.dabbssolutions.farmwalayuser.model.guesthousefeatures;
 import com.dabbssolutions.farmwalayuser.model.guesthousepictures;
 import com.dabbssolutions.farmwalayuser.model.guesthouses;
-import com.github.florent37.singledateandtimepicker.dialog.DoubleDateAndTimePickerDialog;
+//import com.github.florent37.singledateandtimepicker.dialog.DoubleDateAndTimePickerDialog;
 import com.google.gson.Gson;
 import com.tsongkha.spinnerdatepicker.DatePicker;
 import com.tsongkha.spinnerdatepicker.DatePickerDialog;
@@ -59,7 +59,7 @@ public class GuestHouseDetailsActivity extends AppCompatActivity {
     RelativeLayout btnViewDetails;
     TextView btnBookNow;
     TextView details;
-    DoubleDateAndTimePickerDialog.Builder doubleBuilder;
+//    DoubleDateAndTimePickerDialog.Builder doubleBuilder;
     GridView lvpics;
     TextView txtFeatures;
 
