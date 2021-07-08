@@ -30,15 +30,23 @@ import com.dabbssolutions.farmwalayuser.dao.guesthouseDao;
 import com.dabbssolutions.farmwalayuser.model.farmhouses;
 import com.dabbssolutions.farmwalayuser.model.guesthouses;
 import com.google.gson.Gson;
+import com.tsongkha.spinnerdatepicker.DatePicker;
+import com.tsongkha.spinnerdatepicker.DatePickerDialog;
+import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
     RelativeLayout guestHouseBtn,farmHouseBtn;
     ListView lv;
-    EditText txtSearch;
+    EditText txtSearch, startDate, endDate;
     RelativeLayout BtnSearch;
+    String checkinDate,checkoutDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         guestHouseBtn=(RelativeLayout)findViewById(R.id.guesthousebtn);
         farmHouseBtn=(RelativeLayout)findViewById(R.id.farmhousebtn);
         lv=(ListView)findViewById(R.id.lvItems);
+        startDate = (EditText)findViewById(R.id.txtStartDate);
+        endDate = (EditText)findViewById(R.id.txtEndDate);
 
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
@@ -222,6 +232,59 @@ public class MainActivity extends AppCompatActivity {
                 }).start();
             }
         });
+
+
+        startDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SpinnerDatePickerDialogBuilder()
+                        .context(MainActivity.this)
+                        .callback(new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                startDate.setText(dayOfMonth+"-"+monthOfYear+1+"-"+year);
+                                checkinDate=year+"-"+monthOfYear+1+"-"+dayOfMonth;
+                                startDate.setText(checkinDate);
+                            }
+                        })
+
+                        .spinnerTheme(R.style.NumberPickerStyle)
+                        .showTitle(true)
+                        .showDaySpinner(true)
+                        .defaultDate(2017, 0, 1)
+                        .maxDate(2050, 0, 1)
+                        .minDate(2000, 0, 1)
+                        .build()
+                        .show();
+            }
+        });
+
+        endDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SpinnerDatePickerDialogBuilder()
+                        .context(MainActivity.this)
+                        .callback(new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                endDate.setText(dayOfMonth+"-"+monthOfYear+1+"-"+year);
+                                checkoutDate=year+"-"+monthOfYear+1+"-"+dayOfMonth;
+                                endDate.setText(checkoutDate);
+                            }
+                        })
+
+                        .spinnerTheme(R.style.NumberPickerStyle)
+                        .showTitle(true)
+                        .showDaySpinner(true)
+                        .defaultDate(2017, 0, 1)
+                        .maxDate(2050, 0, 1)
+                        .minDate(2000, 0, 1)
+                        .build()
+                        .show();
+            }
+        });
+
+
 
 //      SHOWING FARMHOUSE LIST BY DEFUALT ON PAGE LOAD UP
 //      TRIGGERING THE ON CLICK LISTENER

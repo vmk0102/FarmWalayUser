@@ -63,34 +63,43 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             >
-<!--            <EditText-->
-<!--                android:id="@+id/txtSearchingData"-->
-<!--                android:layout_width="300dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:textSize="18sp"-->
-<!--                android:layout_marginRight="-30dp"-->
-<!--                android:paddingLeft="20dp"-->
-<!--                android:backgroundTint="@color/lightgreenapp"-->
-<!--                android:hint="search" />-->
-<!--            <RelativeLayout-->
-<!--                android:id="@+id/btnSearch"-->
-<!--                android:background="@drawable/roundedbtn"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_gravity="right"-->
+            <EditText
+                android:id="@+id/txtStartDate"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:textSize="18sp"
+                android:layout_marginRight="-30dp"
+                android:paddingLeft="20dp"
+                android:backgroundTint="@color/lightgreenapp"
+                android:hint="Start Date" />
+            <EditText
+                android:id="@+id/txtEndDate"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:textSize="18sp"
+                android:layout_marginRight="-30dp"
+                android:paddingLeft="20dp"
+                android:backgroundTint="@color/lightgreenapp"
+                android:hint="End Date" />
+            <RelativeLayout
+                android:id="@+id/btnSearch"
+                android:background="@drawable/roundedbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
 
 
-<!--                >-->
-<!--                <ImageView-->
-<!--                    android:layout_width="30dp"-->
-<!--                    android:layout_height="30dp"-->
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
 
-<!--                    android:src="@drawable/ic_search"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:layout_centerVertical="true"-->
-<!--                    app:tint="@color/white"-->
-<!--                    />-->
-<!--            </RelativeLayout>-->
+                    android:src="@drawable/ic_search"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    app:tint="@color/white"
+                    />
+            </RelativeLayout>
         </LinearLayout>
 
 <LinearLayout
