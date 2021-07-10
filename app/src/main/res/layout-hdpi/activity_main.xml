@@ -8,7 +8,7 @@
     >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:backgroundTint="@color/white"
 
         android:background="@drawable/roundedtopcorner"
@@ -17,7 +17,7 @@
             android:id="@+id/select"
             android:orientation="horizontal"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="135dp"
             android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -54,31 +54,41 @@
         <LinearLayout
             android:layout_below="@id/select"
             android:id="@+id/searchbar"
-            android:layout_marginTop="20dp"
+            android:background="@color/lightgreenapp"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/roundedbtn"
             android:orientation="horizontal"
             android:backgroundTint="@color/lightgreenapp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             >
             <EditText
-                android:id="@+id/txtSearchingData"
-                android:layout_width="300dp"
+                android:id="@+id/txtStartDate"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:textSize="18sp"
-                android:layout_marginRight="-30dp"
+                android:textSize="15sp"
+                android:background="@color/white"
+
                 android:paddingLeft="20dp"
                 android:backgroundTint="@color/lightgreenapp"
-                android:hint="search" />
+                android:hint="Start Date" />
+            <EditText
+                android:id="@+id/txtEndDate"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:textSize="15sp"
+                android:layout_marginLeft="30dp"
+                android:paddingLeft="20dp"
+                android:backgroundTint="@color/lightgreenapp"
+                android:hint="End Date" />
             <RelativeLayout
                 android:id="@+id/btnSearch"
                 android:background="@drawable/roundedbtn"
-                android:layout_width="match_parent"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="right"
-
+                android:layout_gravity="end"
+                android:layout_marginLeft="60dp"
 
                 >
                 <ImageView
@@ -210,17 +220,29 @@
     </RelativeLayout>
     <LinearLayout
         android:layout_centerHorizontal="true"
-        android:background="@drawable/roundedcircle"
         android:elevation="20dp"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_height="wrap_content">
+
         <ImageView
-            android:elevation="10dp"
-            android:layout_marginTop="0dp"
-            android:layout_width="150dp"
-            android:src="@drawable/fm_transparent"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            
             android:layout_centerHorizontal="true"
-            android:layout_height="150dp" />
+            android:layout_marginTop="0dp"
+            android:elevation="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/dummy_banner" />
+<!--        <ImageView-->
+<!--            android:elevation="10dp"-->
+<!--            android:layout_marginTop="0dp"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:src="@drawable/fm_transparent"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_height="150dp" />-->
     </LinearLayout>
 
 
