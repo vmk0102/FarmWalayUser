@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        txtSearch=(EditText)findViewById(R.id.txtSearchingData);
+        //txtSearch=(EditText)findViewById(R.id.txtSearchingData);
         BtnSearch = (RelativeLayout) findViewById(R.id.btnSearch);
         guestHouseBtn=(RelativeLayout)findViewById(R.id.guesthousebtn);
         farmHouseBtn=(RelativeLayout)findViewById(R.id.farmhousebtn);
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                                     AdapterGuesthouses aa = new AdapterGuesthouses(userslist, MainActivity.this,0);
                                     lv.setAdapter(aa);
 
-                                    txtSearch.addTextChangedListener(new TextWatcher() {
+                                 /*  txtSearch.addTextChangedListener(new TextWatcher() {
                                         @Override
                                         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -142,8 +142,7 @@ public class MainActivity extends AppCompatActivity {
                                         }
 
 
-                                    });
-
+                                    });*/
                                 }catch (Exception d){
                                     Toast.makeText(MainActivity.this, d.toString(), Toast.LENGTH_SHORT).show();
                                 }
@@ -179,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                                     AdapterFarmhouses aa = new AdapterFarmhouses(userslist, MainActivity.this,0);
                                     lv.setAdapter(aa);
 
-                                    txtSearch.addTextChangedListener(new TextWatcher() {
+                                    /*txtSearch.addTextChangedListener(new TextWatcher() {
                                         @Override
                                         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -221,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                                         }
-                                    });
+                                    });*/
 
                                 }catch (Exception d){
                                     Toast.makeText(MainActivity.this, d.toString(), Toast.LENGTH_SHORT).show();
