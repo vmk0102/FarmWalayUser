@@ -226,6 +226,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/imgbanner"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             

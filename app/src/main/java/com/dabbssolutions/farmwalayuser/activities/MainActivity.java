@@ -8,14 +8,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -27,8 +32,10 @@ import com.dabbssolutions.farmwalayuser.adapters.AdapterFarmhouses;
 import com.dabbssolutions.farmwalayuser.adapters.AdapterGuesthouses;
 import com.dabbssolutions.farmwalayuser.dao.farmhouseDao;
 import com.dabbssolutions.farmwalayuser.dao.guesthouseDao;
+import com.dabbssolutions.farmwalayuser.dao.adsDAO;
 import com.dabbssolutions.farmwalayuser.model.farmhouses;
 import com.dabbssolutions.farmwalayuser.model.guesthouses;
+import com.dabbssolutions.farmwalayuser.model.ads;
 import com.google.gson.Gson;
 import com.tsongkha.spinnerdatepicker.DatePicker;
 import com.tsongkha.spinnerdatepicker.DatePickerDialog;
@@ -47,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     EditText txtSearch, startDate, endDate;
     RelativeLayout BtnSearch;
     String checkinDate,checkoutDate;
+    ImageView imgbanner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         lv=(ListView)findViewById(R.id.lvItems);
         startDate = (EditText)findViewById(R.id.txtStartDate);
         endDate = (EditText)findViewById(R.id.txtEndDate);
+        imgbanner = (android.widget.ImageView)findViewById(R.id.imgbanner);
 
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
@@ -69,6 +79,58 @@ public class MainActivity extends AppCompatActivity {
 
         final ProgressDialog pd = new ProgressDialog(MainActivity.this);
         pd.setMessage("Please wait");
+        BtnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pd.show();
+                checkinDate = startDate.getText().toString();
+                checkoutDate = endDate.getText().toString();
+                if( farmHouseBtn.isEnabled() ){
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            final String farms = new farmhouseDao().getFarmhouseByDate(checkinDate, checkoutDate, MainActivity.this);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    pd.cancel();
+                                    guesthouses[] u = new Gson().fromJson(farms,guesthouses[].class);
+                                    ArrayList<guesthouses> userslist = new ArrayList();
+                                    ArrayList<guesthouses> userslist2 = new ArrayList();
+                                    Collections.addAll(userslist,u);
+                                    Collections.addAll(userslist2,u);
+                                    AdapterGuesthouses aa = new AdapterGuesthouses(userslist, MainActivity.this,0);
+                                    lv.setAdapter(aa);
+                                }
+                            });
+                        }
+                    });
+                }
+                else {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            final String guests = new guesthouseDao().getGuesthouseByDate(checkinDate, checkoutDate, MainActivity.this);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    pd.cancel();
+                                    guesthouses[] u = new Gson().fromJson(guests,guesthouses[].class);
+                                    ArrayList<guesthouses> userslist = new ArrayList();
+                                    ArrayList<guesthouses> userslist2 = new ArrayList();
+                                    Collections.addAll(userslist,u);
+                                    Collections.addAll(userslist2,u);
+                                    AdapterGuesthouses aa = new AdapterGuesthouses(userslist, MainActivity.this,0);
+                                    lv.setAdapter(aa);
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        });
+
+
 
 
 
@@ -165,12 +227,20 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         final String s = new farmhouseDao().getAllFarmhouses(MainActivity.this);
+                        final String image = new adsDAO().getAllAds(MainActivity.this);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 try{
                                     pd.cancel();
                                     farmhouses[] u = new Gson().fromJson(s,farmhouses[].class);
+                                    ads[] img = new Gson().fromJson(image,ads[].class);
+
+                                    imgbanner= findViewById(R.id.imgbanner);
+                                    byte[] decodedString = Base64.decode(img[0].getImage(), Base64.DEFAULT);
+                                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                                    imgbanner.setImageBitmap(decodedByte);
+
                                     ArrayList<farmhouses> userslist = new ArrayList();
                                     ArrayList<farmhouses> userslist2 = new ArrayList();
                                     Collections.addAll(userslist,u);
@@ -289,6 +359,7 @@ public class MainActivity extends AppCompatActivity {
 //      TRIGGERING THE ON CLICK LISTENER
         farmHouseBtn.performClick();
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

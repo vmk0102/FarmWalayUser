@@ -72,6 +72,49 @@ public class guesthouseDao {
 
 
 
+    public String getGuesthouseByDate(String CheckInDate,String CheckoutDate, Context context){
+
+        try{
+            String postReceiverUrl = "http://dabbssolutions.org/api/guestHousesAPI/findAvailableGuesthousesByDates.php";//https://www.pakistanscrabble.org/api.php";
+
+            // HttpClient
+            HttpClient httpClient = new DefaultHttpClient();
+
+            // post header
+            HttpPost httpPost = new HttpPost(postReceiverUrl);
+
+            httpPost.setHeader("Accept", "/");
+            httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            // add your data
+            List<NameValuePair> nameValuePairs = new ArrayList<>();
+            nameValuePairs.add(new BasicNameValuePair("startDate", CheckInDate));
+            nameValuePairs.add(new BasicNameValuePair("endDate", CheckoutDate));
+
+            httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+            // execute HTTP post request
+            HttpResponse response = httpClient.execute(httpPost);
+            HttpEntity resEntity = response.getEntity();
+
+
+            if (resEntity != null) {
+                Log.v("Hello code: ",String.valueOf(response.getStatusLine().getStatusCode()));
+                String responseStr = EntityUtils.toString(resEntity).trim();
+                Log.v("SOMEONE ONCE SAID", "Response: " + responseStr);
+                return responseStr;
+                // you can add an if statement here and do other actions based on the response
+            } else {
+                Log.v("","No Data");
+                return "No Data";
+            }
+        } catch (Exception e) {
+            Log.v("", e.getMessage());
+            return e.getMessage();
+        }
+    }
+
+
 
 
 
