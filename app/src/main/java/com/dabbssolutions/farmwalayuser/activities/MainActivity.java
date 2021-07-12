@@ -79,13 +79,14 @@ public class MainActivity extends AppCompatActivity {
 
         final ProgressDialog pd = new ProgressDialog(MainActivity.this);
         pd.setMessage("Please wait");
+        pd.setCancelable(false);
         BtnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pd.show();
                 checkinDate = startDate.getText().toString();
                 checkoutDate = endDate.getText().toString();
-                if( farmHouseBtn.isEnabled() ){
+                if( !farmHouseBtn.isEnabled() ){
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -94,17 +95,17 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     pd.cancel();
-                                    guesthouses[] u = new Gson().fromJson(farms,guesthouses[].class);
-                                    ArrayList<guesthouses> userslist = new ArrayList();
-                                    ArrayList<guesthouses> userslist2 = new ArrayList();
+                                    farmhouses[] u = new Gson().fromJson(farms,farmhouses[].class);
+                                    ArrayList<farmhouses> userslist = new ArrayList();
+                                    ArrayList<farmhouses> userslist2 = new ArrayList();
                                     Collections.addAll(userslist,u);
                                     Collections.addAll(userslist2,u);
-                                    AdapterGuesthouses aa = new AdapterGuesthouses(userslist, MainActivity.this,0);
+                                    AdapterFarmhouses aa = new AdapterFarmhouses(userslist, MainActivity.this,0);
                                     lv.setAdapter(aa);
                                 }
                             });
                         }
-                    });
+                    }).start();
                 }
                 else {
                     new Thread(new Runnable() {
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             });
                         }
-                    });
+                    }).start();
                 }
             }
         });
@@ -137,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
         guestHouseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                endDate.setText("");
+                startDate.setText("");
                 farmHouseBtn.setEnabled(true);
                 guestHouseBtn.setEnabled(false);
                 farmHouseBtn.setBackgroundResource(R.drawable.roundedbtn);
@@ -218,6 +221,8 @@ public class MainActivity extends AppCompatActivity {
         farmHouseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                endDate.setText("");
+                startDate.setText("");
                 farmHouseBtn.setEnabled(false);
                 guestHouseBtn.setEnabled(true);
                 farmHouseBtn.setBackgroundResource(R.drawable.round_btn_disable);
@@ -313,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 startDate.setText(dayOfMonth+"-"+monthOfYear+1+"-"+year);
                                 checkinDate=year+"-"+monthOfYear+1+"-"+dayOfMonth;
-                                startDate.setText(checkinDate);
+                                //startDate.setText(checkinDate);
                             }
                         })
 
@@ -338,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 endDate.setText(dayOfMonth+"-"+monthOfYear+1+"-"+year);
                                 checkoutDate=year+"-"+monthOfYear+1+"-"+dayOfMonth;
-                                endDate.setText(checkoutDate);
+                                //endDate.setText(checkoutDate);
                             }
                         })
 
