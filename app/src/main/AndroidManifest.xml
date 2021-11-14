@@ -49,6 +49,16 @@
         <activity android:name=".activities.ActivityViewBookings">
 
         </activity>
+        <activity android:name=".activities.ActivitySelect">
+
+        </activity>
+        <activity android:name=".activities.ActivityTransporters">
+
+        </activity>
+        <activity android:name=".activities.ActivityCaterers">
+
+        </activity>
+
     </application>
 
 </manifest>

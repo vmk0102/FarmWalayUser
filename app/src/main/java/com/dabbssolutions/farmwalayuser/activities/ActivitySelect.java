@@ -13,7 +13,7 @@ import com.google.gson.internal.$Gson$Preconditions;
 
 public class ActivitySelect extends AppCompatActivity {
 
-    LinearLayout farmHouses,guestHouses,transporters,Caterers
+    LinearLayout farmHouses,guestHouses,transporters,Caterers;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,12 @@ public class ActivitySelect extends AppCompatActivity {
             }
         });
         transporters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        Caterers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
