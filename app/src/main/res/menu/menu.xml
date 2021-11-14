@@ -3,9 +3,7 @@
     
     >
 <item android:id="@+id/btnProfile" android:title="My Profile" />
-<item android:id="@+id/btnMyBookings" android:title="My Bookings"
-    android:visible="false"
-    />
+<item android:id="@+id/btnMyBookings" android:title="My Bookings" />
 <item android:id="@+id/btnLogout" android:title="Logout" />
 
 </menu>

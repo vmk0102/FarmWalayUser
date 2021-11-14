@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greenapp"
+    android:fillViewport="true"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/white"
+
+        android:background="@drawable/roundedtopcorner"
+        android:layout_height="match_parent" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="100dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Manage Bookings"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/greenapp"
+                android:textStyle="bold"
+                />
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/addF"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/roundedbtn"
+                    android:backgroundTint="@color/lightgreenapp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_add"
+                        android:tint="@color/greenapp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Add Bookings"
+                        android:textColor="@color/greenapp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/viewF"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/roundedbtn"
+                    android:backgroundTint="@color/lightgreenapp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_view"
+                        android:tint="@color/greenapp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="View Bookings"
+                        android:textColor="@color/greenapp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/updateF"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/roundedbtn"
+                    android:backgroundTint="@color/lightgreenapp"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_update"
+                        android:tint="@color/greenapp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Update Features"
+                        android:textColor="@color/greenapp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/deleteF"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/roundedbtn"
+                    android:backgroundTint="@color/lightgreenapp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_trash"
+                        android:tint="@color/greenapp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Delete Bookings"
+                        android:textColor="@color/greenapp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/roundedcircle"
+        android:elevation="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:elevation="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="150dp"
+            android:src="@drawable/fm_transparent"
+            android:layout_centerHorizontal="true"
+            android:layout_height="150dp" />
+    </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

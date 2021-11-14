@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greenapp"
+    android:fillViewport="true"
+    >
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="80dp"
+            android:backgroundTint="@color/white"
+
+            android:background="@drawable/roundedtopcorner"
+            android:layout_height="match_parent" >
+
+            <RelativeLayout
+                android:layout_marginTop="100dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/mFarmhouses"
+                    android:background="@drawable/roundedbtn"
+                    android:backgroundTint="@color/lightgreenapp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp">
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:tint="@color/greenapp"
+                        android:src="@drawable/ic_farmhouse" />
+                    <TextView
+                        android:text="Farm Houses"
+                        android:textColor="@color/greenapp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/mGuesthouses"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/roundedbtn"
+                    android:backgroundTint="@color/lightgreenapp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp">
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:tint="@color/greenapp"
+                        android:src="@drawable/ic_guesthouse" />
+                    <TextView
+                        android:text="Guest Houses"
+                        android:textColor="@color/greenapp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/mTransporters"
+                    android:background="@drawable/roundedbtn"
+                    android:backgroundTint="@color/lightgreenapp"
+                    android:gravity="center"
+                    android:layout_below="@id/mFarmhouses"
+                    android:layout_marginTop="50dp"
+                    android:orientation="vertical"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp">
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:tint="@color/greenapp"
+                        android:src="@drawable/ic_guesthouse" />
+                    <TextView
+                        android:text="Transporters"
+                        android:textColor="@color/greenapp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/mCaterers"
+                    android:background="@drawable/roundedbtn"
+                    android:backgroundTint="@color/lightgreenapp"
+                    android:gravity="center"
+                    android:layout_below="@id/mGuesthouses"
+                    android:layout_marginTop="50dp"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp">
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:tint="@color/greenapp"
+                        android:src="@drawable/ic_guesthouse" />
+                    <TextView
+                        android:text="Caterers"
+                        android:textColor="@color/greenapp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/roundedcircle"
+            android:elevation="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:elevation="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_width="150dp"
+                android:src="@drawable/fm_transparent"
+                android:layout_centerHorizontal="true"
+                android:layout_height="150dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

@@ -139,11 +139,12 @@ public class ActivityMyProfile extends AppCompatActivity {
             return  true;
         }
         else if(item.getItemId()==R.id.btnMyBookings){
+            startActivity(new Intent(ActivityMyProfile.this,ActivityViewBookings.class));
             return  true;
         }
         else if(item.getItemId()==R.id.btnProfile){
             startActivity(new Intent(ActivityMyProfile.this,ActivityMyProfile.class));
-            startActivity(new Intent(ActivityMyProfile.this,ActivityMyProfile.class));
+            return true;
         }
         return  false;
 

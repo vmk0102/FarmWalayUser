@@ -46,6 +46,9 @@
         <activity android:name=".activities.ActivityMyProfile" >
 
         </activity>
+        <activity android:name=".activities.ActivityViewBookings">
+
+        </activity>
     </application>
 
 </manifest>

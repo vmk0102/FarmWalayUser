@@ -15,7 +15,7 @@ import com.dabbssolutions.farmwalayuser.model.guesthousepictures;
 
 import java.util.ArrayList;
 
-public class AdapterGuesthousePictures extends BaseAdapter {
+public class  AdapterGuesthousePictures extends BaseAdapter {
     ArrayList<guesthousepictures> farmhouses;
     Context context;
     int view;

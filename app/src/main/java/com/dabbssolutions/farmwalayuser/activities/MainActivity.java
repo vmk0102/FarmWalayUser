@@ -382,10 +382,12 @@ public class MainActivity extends AppCompatActivity {
             return  true;
         }
         else if(item.getItemId()==R.id.btnMyBookings){
+            startActivity(new Intent(MainActivity.this,ActivityViewBookings.class));
             return  true;
         }
         else if(item.getItemId()==R.id.btnProfile){
             startActivity(new Intent(MainActivity.this,ActivityMyProfile.class));
+            return  true;
         }
         return  false;
 

@@ -73,6 +73,95 @@ public class bookingDao {
         }
     }
 
+    public String getFarmhouseBookingsByID(String uid, Context context) {
+
+        try {
+            final StrictMode.ThreadPolicy policy = new
+                    StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+
+            String postReceiverUrl = "http://dabbssolutions.org/api/bookingsAPI/getFarmhouseBookingsByID.php";//https://www.pakistanscrabble.org/api.php";
+            Log.v("SOMEONE ONCE SAID", "postURL: " + postReceiverUrl);
+
+            // HttpClient
+            HttpClient httpClient = new DefaultHttpClient();
+
+            // post header
+            HttpPost httpPost = new HttpPost(postReceiverUrl);
+
+            // add your data
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("uid", uid));
+
+            httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+            // execute HTTP post request
+            HttpResponse response = httpClient.execute(httpPost);
+            HttpEntity resEntity = response.getEntity();
+
+            if (resEntity != null) {
+
+                String responseStr = EntityUtils.toString(resEntity).trim();
+                Log.v("SOMEONE ONCE SAID", "Response: " + responseStr);
+                return responseStr;
+                //return responseStr;
+
+                // you can add an if statement here and do other actions based on the response
+            }else{
+                return "NO DATA";
+            }
+        } catch (Exception e) {
+            return e.getMessage();
+
+        }
+    }
+
+
+    public String getGuesthouseBookingsByID(String uid, Context context) {
+
+        try {
+            final StrictMode.ThreadPolicy policy = new
+                    StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+
+            String postReceiverUrl = "http://dabbssolutions.org/api/bookingsAPI/getGuesthouseBookingsByID.php";//https://www.pakistanscrabble.org/api.php";
+            Log.v("SOMEONE ONCE SAID", "postURL: " + postReceiverUrl);
+
+            // HttpClient
+            HttpClient httpClient = new DefaultHttpClient();
+
+            // post header
+            HttpPost httpPost = new HttpPost(postReceiverUrl);
+
+            // add your data
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("uid", uid));
+
+            httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+            // execute HTTP post request
+            HttpResponse response = httpClient.execute(httpPost);
+            HttpEntity resEntity = response.getEntity();
+
+            if (resEntity != null) {
+
+                String responseStr = EntityUtils.toString(resEntity).trim();
+                Log.v("SOMEONE ONCE SAID", "Response: " + responseStr);
+                return responseStr;
+                //return responseStr;
+
+                // you can add an if statement here and do other actions based on the response
+            }else{
+                return "NO DATA";
+            }
+        } catch (Exception e) {
+            return e.getMessage();
+
+        }
+    }
+
 
 
 

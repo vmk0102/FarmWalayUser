@@ -78,7 +78,7 @@ public class GuestHouseDetailsActivity extends AppCompatActivity {
         String Location=getIntent().getStringExtra("location");
         String Price=getIntent().getStringExtra("price");
         String Name=getIntent().getStringExtra("name");
-        String[] id=getIntent().getStringExtra("id").split(":");
+        final String[] id=getIntent().getStringExtra("id").split(":");
         ArrayList<guesthousefeatures> gfs = new ArrayList<>();
         ArrayList<farmhousefeatures> ffs = new ArrayList<>();
         ArrayList<guesthousepictures>gps= new ArrayList<>();
@@ -173,6 +173,7 @@ public class GuestHouseDetailsActivity extends AppCompatActivity {
                                                     long diff = date2.getTime() - date1.getTime();
                                                     b.setBookingprice(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) * Double.parseDouble(Price));
                                                     b.setLocation(Location);
+                                                    b.setGuesthouseid(Integer.parseInt(id[1]));
                                                     b.setIsConfirmed(1);
                                                     SharedPreferences sharedPreferences =getSharedPreferences("mypref", Context.MODE_PRIVATE);
                                                     int uid=Integer.parseInt(sharedPreferences.getString("uid","0"));
@@ -266,6 +267,7 @@ public class GuestHouseDetailsActivity extends AppCompatActivity {
             return  true;
         }
         else if(item.getItemId()==R.id.btnMyBookings){
+            startActivity(new Intent(GuestHouseDetailsActivity.this,ActivityViewBookings.class));
             return  true;
         }
         else if(item.getItemId()==R.id.btnProfile){

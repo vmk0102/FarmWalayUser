@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingRight="20dp"
+
+    >
+    <TableLayout
+        android:id="@+id/infoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+
+            <TextView
+                android:id="@+id/lblUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="User Name:"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                />
+
+
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="Wali Muhammad Khubaib"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:id="@+id/lblFarmName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Farmhouse Name"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                />
+
+
+            <TextView
+                android:id="@+id/txtFarmName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="ABC"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:id="@+id/lblLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                />
+
+
+            <TextView
+                android:id="@+id/txtLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="Karachi,Pakistan"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:id="@+id/lblPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone #"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                />
+
+
+            <TextView
+                android:id="@+id/txtPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="0321-123456789"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:id="@+id/lblPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Price:"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                />
+
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="2312"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:id="@+id/lblCheckIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Check In Date:"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                />
+
+
+            <TextView
+                android:id="@+id/txtCheckIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="2021-June-12"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:id="@+id/lblCheckOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Check Out Date:"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                />
+
+
+            <TextView
+                android:id="@+id/txtCheckOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="2021-June-13"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </TableRow>
+
+    </TableLayout>
+<LinearLayout
+    android:layout_below="@+id/infoLayout"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:id="@+id/viewdeleteupdate"
+    android:layout_marginTop="10dp"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@drawable/roundedbtn"
+        android:backgroundTint="@android:color/holo_red_dark">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Delete Booking"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
+
+</RelativeLayout>
